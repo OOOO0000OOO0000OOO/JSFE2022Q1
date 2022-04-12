@@ -1,0 +1,224 @@
+$color-light-xl: #FFFFFF
+$color-light-l: #F6F6F6
+$color-light-s: #FAFAFA
+$color-dark-s: #CDCDCD
+$color-dark-m: #B2B2B2
+$color-dark-l: #545454
+$color-dark-xl: #4C4C4C
+$color-dark-2xl: #444444
+$color-dark-3xl: #292929
+$color-primary: #F1CDB3
+$color-primary-light: #FDDCC4
+
+%h2
+  font-family: 'Georgia'
+  font-style: normal
+  font-weight: 400
+  font-size: 44px
+  line-height: 130%
+  color: #C4C4C4
+
+%h3
+  font-family: 'Georgia'
+  font-style: normal
+  font-weight: 400
+  font-size: 35px
+  line-height: 130%
+  letter-spacing: 0.06em
+  color: #C4C4C4
+
+%h4
+  font-family: 'Georgia'
+  font-style: normal
+  font-weight: 400
+  font-size: 20px
+  line-height: 115%
+  letter-spacing: 0.06em
+  color: #C4C4C4
+
+%h5
+  font-family: 'Georgia'
+  font-style: normal
+  font-weight: 400
+  font-size: 15px
+  line-height: 110%
+  letter-spacing: 0.06em
+  color: #C4C4C4
+
+%paragraph-l
+  font-family: 'Arial'
+  font-style: normal
+  font-weight: 100
+  font-size: 15px
+  line-height: 160%
+  color: $color-light-xl
+
+%paragraph-s
+  font-family: 'Arial'
+  font-style: italic
+  font-weight: 100
+  font-size: 12px
+  line-height: 150%
+  color: #C4C4C4
+
+%logo_title
+  font-family: 'Georgia'
+  font-style: normal
+  font-weight: 400
+  font-size: 32px
+  line-height: 110%
+  letter-spacing: 0.06em
+  color: $color-primary
+
+%logo_subtitle
+  font-family: 'Arial'
+  font-style: normal
+  font-weight: 400
+  font-size: 13px
+  line-height: 15px
+  letter-spacing: 0.1em
+  color: $color-light-xl
+
+%card-hover
+  background: #C4C4C4
+  box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04)
+
+%start-bg-gradient
+  background: url('../images/noise_transparent@2x.png'), radial-gradient(86% 215.42% at 0% 0%, #5b483a 0%, #262425 100%), #211f20
+
+%footer-bg-gradient
+  background: url('../images/noise_transparent@2x.png'), radial-gradient(110.67% 538.64% at 5.73% 50%, #513D2F 0%, #1A1A1C 100%), #211f20
+
+%button-primary
+  display: inline-block
+  padding: 15px 45px
+  width: fit-content
+  background: $color-primary
+  border-radius: 100px
+  font-family: 'Georgia'
+  font-style: normal
+  font-weight: 400
+  font-size: 17px
+  line-height: 130%
+  letter-spacing: 0.06em
+  color: $color-dark-3xl
+  transition: .3s ease-in-out
+
+%button-on-hover
+  background: $color-primary-light
+
+
+
+@import url('./normalize.css')
+@font-face 
+  font-family: 'Georgia' 
+  src: url('../fonts/georgia-regular.ttf') format('truetype')
+  font-weight: 400
+  font-style: normal
+  font-display: swap
+@font-face 
+  font-family: 'Arial'
+  src: url('../fonts/arial-regular.ttf') format('truetype')
+  font-weight: 400
+  font-style: normal
+  font-display: swap
+@font-face 
+  font-family: 'Arial'
+  src: url('../fonts/arial-italic.ttf') format('truetype')
+  font-weight: 400
+  font-style: italic
+  font-display: swap
+
+*
+  padding: 0
+  margin: 0
+  text-decoration: none
+
+html
+  scroll-behavior: smooth
+
+.container
+  margin: 0 auto
+  width: 1200px
+  padding: 0 40px
+
+.paragraph-l
+  @extend %paragraph-l
+
+.start-screen-gradient-background
+  @extend %start-bg-gradient
+
+.footer-gradient-background
+  @extend %footer-bg-gradient
+
+.gray-background
+  background: $color-light-l
+
+.logo
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: flex-end
+
+h1.title
+  @extend %logo_title
+
+h2.subtitle
+  @extend %logo_subtitle
+  padding-right: 2px
+.header.container
+  &:not(.header-pets)
+    margin-bottom: -180px
+  height: 60px
+  padding-top: 60px
+  padding-bottom: 60px
+  display: flex
+  justify-content: space-between
+
+.nav-list
+  padding-top: 16px 
+  height: 100%
+  display: flex
+  column-gap: 35px
+
+.nav-item
+  list-style-type: none
+  .nav-link
+    display: inline-block
+    @extend %paragraph-l
+    color: $color-dark-s
+    letter-spacing: 0.005em
+    text-decoration: none
+    transition: .3s ease-in-out
+    &.nav-active
+      color: $color-light-s
+      border-bottom: 4px solid $color-primary
+  &:hover .nav-link
+    color: $color-light-s
+
+.welcome-section
+  display: flex
+  padding-top: 180px 
+  column-gap: 42px
+
+.welcome-content
+  margin: 163px 0 auto
+  display: flex
+  flex-direction: column
+  row-gap: 42px
+  .paragraph-l
+    color: $color-dark-s
+
+.welcome-title
+  @extend %h2
+  color: $color-light-xl
+
+.button-primary
+  @extend %button-primary
+  &:hover
+    @extend %button-on-hover
+
+.welcome-dog
+  background: 2px 0 / contain no-repeat url('../images/start-screen-puppy.png')
+  min-width: 698px
+  min-height: 728px

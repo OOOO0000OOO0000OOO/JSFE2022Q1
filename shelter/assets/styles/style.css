@@ -173,7 +173,7 @@ html {
   background: #F6F6F6;
 }
 
-.logo {
+.logo, .link-logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -187,6 +187,10 @@ html {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
+}
+
+.link-logo {
+  height: 100%;
 }
 
 .header-pets h1.title {
@@ -256,7 +260,7 @@ h2.subtitle {
       -ms-user-select: none;
           user-select: none;
   color: #FAFAFA;
-  border-bottom: 4px solid #F1CDB3;
+  border-bottom: 3px solid #F1CDB3;
 }
 
 .header-pets .nav-item .nav-link.nav-active {

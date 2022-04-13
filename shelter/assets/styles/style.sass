@@ -168,11 +168,14 @@ html
 .gray-background
   background: $color-light-l
 
-.logo
+.logo, .link-logo
   display: flex
   flex-direction: column
   justify-content: space-between
   align-items: flex-end
+
+.link-logo
+  height: 100%
 
 h1.title
   @extend %logo_title
@@ -219,7 +222,7 @@ h2.subtitle
     &.nav-active
       user-select: none
       color: $color-light-s
-      border-bottom: 4px solid $color-primary
+      border-bottom: 3px solid $color-primary
       .header-pets &
         color: $color-dark-3xl
   &:hover .nav-link

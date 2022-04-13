@@ -260,7 +260,8 @@ h2.subtitle
   flex-direction: column
   row-gap: 25px
 
-.section.pets-section
+.section.pets-section,
+.section.help-section
   display: flex
   flex-direction: column
   align-items: center
@@ -327,3 +328,41 @@ h2.subtitle
 
 .button-arrow
   @extend %button-arrow
+
+.help-list
+  display: flex
+  flex-wrap: wrap
+  justify-content: center
+  column-gap: 120px
+  row-gap: 55px
+  .help-item
+    @extend %h4
+    list-style-type: none
+    height: 113px
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    .help-item-img
+      width: 60px
+      height: 60px
+
+.icon-bowls-and-cups
+  background: center center / 100% no-repeat url('../icons/icon-bowls-and-cups.svg')
+.icon-collars-leashes
+  background: center center / 100% no-repeat url('../icons/icon-collars-leashes.svg')
+.icon-medicines
+  background: center center / 100% no-repeat url('../icons/icon-medicines.svg')
+.icon-pet-food
+  background: center center / 100% no-repeat url('../icons/icon-pet-food.svg')
+.icon-shampoos
+  background: center center / 100% no-repeat url('../icons/icon-shampoos.svg')
+.icon-sleeping-area
+  background: center center / 100% no-repeat url('../icons/icon-sleeping-area.svg')
+.icon-toys
+  background: center center / 100% no-repeat url('../icons/icon-toys.svg')
+.icon-transportation
+  background: center center / 100% no-repeat url('../icons/icon-transportation.svg')
+.icon-vitamins
+  background: center center / 100% no-repeat url('../icons/icon-vitamins.svg')
+

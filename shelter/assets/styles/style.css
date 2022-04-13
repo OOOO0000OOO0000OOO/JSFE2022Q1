@@ -28,12 +28,31 @@
   color: #545454;
 }
 
+.donation-content .donation-subtitle {
+  font-family: 'Georgia';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 110%;
+  letter-spacing: 0.06em;
+  color: #545454;
+}
+
 .paragraph-l, .nav-item .nav-link {
   font-family: 'Arial';
   font-style: normal;
   font-weight: 100;
   font-size: 15px;
   line-height: 160%;
+  color: #545454;
+}
+
+.donation-content .donation-descr {
+  font-family: 'Arial';
+  font-style: italic;
+  font-weight: 100;
+  font-size: 12px;
+  line-height: 150%;
   color: #545454;
 }
 
@@ -261,7 +280,7 @@ h2.subtitle {
 
 .section:not(.welcome-section) {
   padding-top: 80px;
-  padding-bottom: 100px;
+  padding-bottom: 99.5px;
 }
 
 .section.about-section {
@@ -477,4 +496,60 @@ h2.subtitle {
 
 .icon-vitamins {
   background: center center/100% no-repeat url("../icons/icon-vitamins.svg");
+}
+
+.donation-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-column-gap: 30px;
+          column-gap: 30px;
+}
+
+.donation-dog {
+  margin-left: 1px;
+  width: 505px;
+  height: 261px;
+  background: center center/100% no-repeat url("../images/donation-dog.png");
+}
+
+.donation-content {
+  max-width: 380px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  row-gap: 20px;
+}
+
+.donation-content .button-donation {
+  color: #545454;
+  padding: 10px 15px;
+  border-radius: 9px;
+  letter-spacing: 0.06em;
+  font-size: 20px;
+  line-height: 115%;
+}
+
+.donation-content .button-donation::after {
+  content: '';
+  display: block;
+  margin-right: 15px;
+  float: left;
+  width: 30px;
+  height: 23px;
+  background: center center/100% no-repeat url("../icons/credit-card.svg");
+}
+
+.donation-content .donation-descr {
+  color: #B2B2B2;
 }

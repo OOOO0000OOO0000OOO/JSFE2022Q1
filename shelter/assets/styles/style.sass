@@ -25,7 +25,7 @@ $color-primary-light: #FDDCC4
   font-size: 35px
   line-height: 130%
   letter-spacing: 0.06em
-  color: #C4C4C4
+  color: $color-dark-l
 
 %h4
   font-family: 'Georgia'
@@ -34,7 +34,7 @@ $color-primary-light: #FDDCC4
   font-size: 20px
   line-height: 115%
   letter-spacing: 0.06em
-  color: #C4C4C4
+  color: $color-dark-l
 
 %h5
   font-family: 'Georgia'
@@ -43,7 +43,7 @@ $color-primary-light: #FDDCC4
   font-size: 15px
   line-height: 110%
   letter-spacing: 0.06em
-  color: #C4C4C4
+  color: $color-dark-l
 
 %paragraph-l
   font-family: 'Arial'
@@ -51,7 +51,7 @@ $color-primary-light: #FDDCC4
   font-weight: 100
   font-size: 15px
   line-height: 160%
-  color: $color-light-xl
+  color: $color-dark-l
 
 %paragraph-s
   font-family: 'Arial'
@@ -59,7 +59,7 @@ $color-primary-light: #FDDCC4
   font-weight: 100
   font-size: 12px
   line-height: 150%
-  color: #C4C4C4
+  color: $color-dark-l
 
 %logo_title
   font-family: 'Georgia'
@@ -79,8 +79,7 @@ $color-primary-light: #FDDCC4
   letter-spacing: 0.1em
   color: $color-light-xl
 
-%card-hover
-  background: #C4C4C4
+%card-on-hover
   box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04)
 
 %start-bg-gradient
@@ -103,11 +102,25 @@ $color-primary-light: #FDDCC4
   letter-spacing: 0.06em
   color: $color-dark-3xl
   transition: .3s ease-in-out
+  &:hover
+    @extend %button-on-hover
 
 %button-on-hover
   background: $color-primary-light
+  cursor: pointer
 
+%button-light
+  @extend %button-primary
+  border: 2px solid $color-primary
+  background: none
+  box-sizing: border-box
+  padding: 13px 43px
 
+%button-arrow
+  @extend %button-light
+  width: 52px
+  height: 52px
+  padding: 0
 
 @import url('./normalize.css')
 @font-face 
@@ -166,6 +179,7 @@ h1.title
 h2.subtitle
   @extend %logo_subtitle
   padding-right: 2px
+
 .header.container
   &:not(.header-pets)
     margin-bottom: -180px
@@ -191,6 +205,7 @@ h2.subtitle
     text-decoration: none
     transition: .3s ease-in-out
     &.nav-active
+      user-select: none
       color: $color-light-s
       border-bottom: 4px solid $color-primary
   &:hover .nav-link
@@ -215,10 +230,100 @@ h2.subtitle
 
 .button-primary
   @extend %button-primary
-  &:hover
-    @extend %button-on-hover
 
 .welcome-dog
   background: 2px 0 / contain no-repeat url('../images/start-screen-puppy.png')
   min-width: 698px
   min-height: 728px
+
+.section-title
+  @extend %h3
+
+.section:not(.welcome-section)
+  padding-top: 80px
+  padding-bottom: 100px
+
+.section.about-section
+  display: flex
+  justify-content: center
+  align-items: center
+  column-gap: 120px
+
+.about-pets-image
+  min-width: 300px
+  min-height: 408px
+  background: 0 0 / contain no-repeat url('../images/about-pets.png')
+
+.about-content
+  max-width: 430px
+  display: flex
+  flex-direction: column
+  row-gap: 25px
+
+.section.pets-section
+  display: flex
+  flex-direction: column
+  align-items: center
+  row-gap: 60px
+  .section-title
+    text-align: center
+
+.main-slider
+  width: 100%
+  display: flex
+  justify-content: space-between
+  align-items: center
+  .slider-container
+    display: flex
+    justify-content: space-between
+    align-items: center
+    column-gap: 90px
+    & :nth-child(1) .pet-img
+      background: 0 0 / contain no-repeat url('../images/katrine.png')
+    & :nth-child(2) .pet-img
+      background: 0 0 / contain no-repeat url('../images/jennifer.png')
+    & :nth-child(3) .pet-img
+      background: 0 0 / contain no-repeat url('../images/woody.png')
+  .slide-left, .slide-right
+    position: relative
+    &::after
+      position: absolute
+      top: 21px
+      left: 17px
+      display: block
+      content: ''
+      width: 14px
+      height: 6px
+
+  .slide-left::after
+      background: center center / 100% no-repeat url('../icons/button-arrow-left.svg')
+
+  .slide-right::after
+      background: center center / 100% no-repeat url('../icons/button-arrow-right.svg')
+
+.pet-card
+  padding-bottom: 30px
+  display: flex
+  flex-direction: column
+  align-items: center
+  row-gap: 30px
+  transition: .3s ease-in-out
+  background: $color-light-s
+  border-radius: 9px
+  .pet-img
+    width: 270px
+    height: 270px
+    border-radius: 9px 9px 0px 0px
+  .pet-name
+    @extend %h4
+  &:hover
+    @extend %card-on-hover
+    cursor: pointer
+    .button
+      @extend %button-on-hover
+
+.button
+  @extend %button-light
+
+.button-arrow
+  @extend %button-arrow

@@ -758,3 +758,10 @@ h2.subtitle {
   height: 310px;
   background: center center/100% no-repeat url("../images/footer-puppy.png");
 }
+
+.header-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  background: #FFFFFF;
+}

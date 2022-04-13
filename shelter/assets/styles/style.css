@@ -18,7 +18,7 @@
   color: #545454;
 }
 
-.pet-card .pet-name, .help-list .help-item, .footer.container .locations-wrapper,
+.pets-slider .slider-pagination .button-arrow, .pet-card .pet-name, .help-list .help-item, .footer.container .locations-wrapper,
 .footer.container .contacts-wrapper {
   font-family: 'Georgia';
   font-style: normal;
@@ -111,6 +111,7 @@ h2.subtitle {
 
 .button-arrow:hover, .button:hover, .button-primary:hover, .pet-card:hover .button {
   background: #FDDCC4;
+  border-color: #FDDCC4;
   cursor: pointer;
 }
 
@@ -188,8 +189,16 @@ html {
           align-items: flex-end;
 }
 
+.header-pets h1.title {
+  color: #545454;
+}
+
 h2.subtitle {
   padding-right: 2px;
+}
+
+.header-pets h2.subtitle {
+  color: #292929;
 }
 
 .header.container {
@@ -206,6 +215,12 @@ h2.subtitle {
 
 .header.container:not(.header-pets) {
   margin-bottom: -180px;
+}
+
+.header.container.header-pets {
+  height: 60px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .nav-list {
@@ -231,6 +246,10 @@ h2.subtitle {
   transition: .3s ease-in-out;
 }
 
+.header-pets .nav-item .nav-link {
+  color: #545454;
+}
+
 .nav-item .nav-link.nav-active {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -240,8 +259,16 @@ h2.subtitle {
   border-bottom: 4px solid #F1CDB3;
 }
 
+.header-pets .nav-item .nav-link.nav-active {
+  color: #292929;
+}
+
 .nav-item:hover .nav-link {
   color: #FAFAFA;
+}
+
+.header-pets .nav-item:hover .nav-link {
+  color: #292929;
 }
 
 .welcome-section {
@@ -395,6 +422,100 @@ h2.subtitle {
 
 .main-slider .slide-right::after {
   background: center center/100% no-repeat url("../icons/button-arrow-right.svg");
+}
+
+.pets-slider {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  row-gap: 60px;
+}
+
+.pets-slider .slider-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  row-gap: 30px;
+}
+
+.pets-slider .slider-container :nth-child(1) .pet-img {
+  background: 0 0/contain no-repeat url("../images/katrine.png");
+}
+
+.pets-slider .slider-container :nth-child(2) .pet-img {
+  background: 0 0/contain no-repeat url("../images/jennifer.png");
+}
+
+.pets-slider .slider-container :nth-child(3) .pet-img {
+  background: 0 0/contain no-repeat url("../images/woody.png");
+}
+
+.pets-slider .slider-container :nth-child(4) .pet-img {
+  background: 0 0/contain no-repeat url("../images/sophia.png");
+}
+
+.pets-slider .slider-container :nth-child(5) .pet-img {
+  background: 0 0/contain no-repeat url("../images/timmy.png");
+}
+
+.pets-slider .slider-container :nth-child(6) .pet-img {
+  background: 0 0/contain no-repeat url("../images/charly.png");
+}
+
+.pets-slider .slider-container :nth-child(7) .pet-img {
+  background: 0 0/contain no-repeat url("../images/scarlet.png");
+}
+
+.pets-slider .slider-container :nth-child(8) .pet-img {
+  background: 0 0/contain no-repeat url("../images/freddie.png");
+}
+
+.pets-slider .slider-pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+}
+
+.pets-slider .slider-pagination .slide-index {
+  background: #F1CDB3;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+.pets-slider .slider-pagination .slide-index:hover {
+  background: #FDDCC4;
+  border-color: #FDDCC4;
+}
+
+.pets-slider .slider-pagination .button-arrow {
+  color: #292929;
+}
+
+.pets-slider .slider-pagination .button-arrow:disabled {
+  border-color: #CDCDCD;
+  color: #CDCDCD;
+}
+
+.pets-slider .slider-pagination .button-arrow:disabled:hover {
+  background: none;
 }
 
 .pet-card {

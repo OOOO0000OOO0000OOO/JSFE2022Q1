@@ -18,7 +18,8 @@
   color: #545454;
 }
 
-.pet-card .pet-name, .help-list .help-item {
+.pet-card .pet-name, .help-list .help-item, .footer.container .locations-wrapper,
+.footer.container .contacts-wrapper {
   font-family: 'Georgia';
   font-style: normal;
   font-weight: 400;
@@ -552,4 +553,88 @@ h2.subtitle {
 
 .donation-content .donation-descr {
   color: #B2B2B2;
+}
+
+.footer.container {
+  padding: 40px 40px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+}
+
+.footer.container .section-title {
+  color: #FFFFFF;
+}
+
+.footer.container .locations-wrapper,
+.footer.container .contacts-wrapper {
+  padding-bottom: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.footer.container .locations-wrapper .footer-link,
+.footer.container .contacts-wrapper .footer-link {
+  color: #F1CDB3;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 20px;
+          column-gap: 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.footer.container .locations-wrapper .email-icon,
+.footer.container .contacts-wrapper .email-icon {
+  width: 40px;
+  height: 32px;
+  background: center center/100% no-repeat url("../icons/mail.svg");
+}
+
+.footer.container .locations-wrapper .phone-icon,
+.footer.container .contacts-wrapper .phone-icon {
+  width: 40px;
+  height: 32px;
+  background: center center/100% no-repeat url("../icons/phone.svg");
+}
+
+.footer.container .locations-wrapper .map-icon,
+.footer.container .contacts-wrapper .map-icon {
+  width: 22px;
+  height: 32px;
+  background: center center/100% no-repeat url("../icons/pin.svg");
+}
+
+.footer.container .contacts-wrapper {
+  row-gap: 40px;
+}
+
+.footer.container .locations-wrapper {
+  width: 302px;
+  row-gap: 32px;
+}
+
+.footer.container .locations-wrapper .section-title {
+  margin-bottom: 2px;
+}
+
+.footer-dog {
+  width: 300px;
+  height: 310px;
+  background: center center/100% no-repeat url("../images/footer-puppy.png");
 }

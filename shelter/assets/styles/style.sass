@@ -403,3 +403,46 @@ h2.subtitle
   .donation-descr
     @extend %paragraph-s
     color: $color-dark-m
+
+.footer.container
+  padding: 40px 40px 0
+  display: flex
+  justify-content: space-between
+  align-content: flex-end
+  .section-title
+    color: $color-light-xl
+  .locations-wrapper,
+  .contacts-wrapper
+    padding-bottom: 60px 
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    @extend %h4
+    .footer-link
+      color: $color-primary
+      display: flex
+      column-gap: 20px
+      align-items: center
+    .email-icon
+      width: 40px
+      height: 32px
+      background: center center / 100% no-repeat url('../icons/mail.svg')
+    .phone-icon
+      width: 40px
+      height: 32px
+      background: center center / 100% no-repeat url('../icons/phone.svg')
+    .map-icon
+      width: 22px
+      height: 32px
+      background: center center / 100% no-repeat url('../icons/pin.svg')
+  .contacts-wrapper
+    row-gap: 40px
+  .locations-wrapper
+    width: 302px
+    row-gap: 32px
+    .section-title
+      margin-bottom: 2px
+.footer-dog
+  width: 300px
+  height: 310px
+  background: center center / 100% no-repeat url('../images/footer-puppy.png')

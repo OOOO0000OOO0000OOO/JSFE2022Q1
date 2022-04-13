@@ -496,13 +496,11 @@ h2.subtitle {
 
 .pets-slider .slider-pagination .slide-index {
   background: #F1CDB3;
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
 }
 
 .pets-slider .slider-pagination .slide-index:hover {
-  background: #FDDCC4;
-  border-color: #FDDCC4;
+  cursor: auto;
+  border-color: #F1CDB3;
 }
 
 .pets-slider .slider-pagination .button-arrow {
@@ -512,6 +510,7 @@ h2.subtitle {
 .pets-slider .slider-pagination .button-arrow:disabled {
   border-color: #CDCDCD;
   color: #CDCDCD;
+  cursor: auto;
 }
 
 .pets-slider .slider-pagination .button-arrow:disabled:hover {

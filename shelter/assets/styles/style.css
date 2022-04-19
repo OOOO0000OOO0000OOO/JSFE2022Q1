@@ -227,6 +227,10 @@ h2.subtitle {
   padding-bottom: 30px;
 }
 
+.burger {
+  display: none;
+}
+
 .nav-list {
   padding-top: 16px;
   height: 100%;
@@ -751,10 +755,12 @@ h2.subtitle {
 }
 
 .footer.container .contacts-wrapper {
+  max-width: 279px;
   row-gap: 40px;
 }
 
 .footer.container .locations-wrapper {
+  max-width: 302px;
   width: 302px;
   row-gap: 32px;
 }
@@ -873,5 +879,250 @@ h2.subtitle {
   .pets-page .section.pets-section {
     row-gap: 30px;
     padding-bottom: 76px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 25px;
+    text-align: center;
+  }
+  .section-title {
+    height: auto;
+  }
+  /********************/
+  .burger {
+    display: block;
+    position: fixed;
+    top: 49px;
+    left: calc( 50vw + 160px - 83px);
+    width: 30px;
+    height: 22px;
+    cursor: pointer;
+    z-index: 30;
+    background: none;
+    outline: none;
+    border: none;
+  }
+  .burger::before {
+    top: 0;
+  }
+  .burger::after {
+    bottom: 0;
+  }
+  .burger .burger-line {
+    top: calc(50% - 2px / 2);
+  }
+  .burger::before, .burger::after,
+  .burger .burger-line {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 30px;
+    height: 2px;
+    background-color: #F1CDB3;
+    -webkit-transition: background-color .3s ease-in-out;
+    transition: background-color .3s ease-in-out;
+  }
+  .pets-page .burger::before, .pets-page .burger::after, .pets-page
+  .burger .burger-line {
+    background-color: #000;
+  }
+  .burger:hover::before, .burger:hover::after,
+  .burger:hover .burger-line {
+    background-color: #FDDCC4;
+  }
+  .pets-page .burger:hover::before, .pets-page .burger:hover::after, .pets-page
+  .burger:hover .burger-line {
+    background-color: #000;
+  }
+  /********************/
+  .navigation {
+    display: none;
+  }
+  .container,
+  .footer.container {
+    width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .section:not(.welcome-section) {
+    padding-top: 41px;
+    padding-bottom: 42px;
+  }
+  .welcome-section {
+    row-gap: 105px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .welcome-section .welcome-dog {
+    width: 260px;
+    height: 271.77px;
+    background-position: 0 0;
+    -ms-flex-item-align: end;
+        align-self: flex-end;
+  }
+  .welcome-title {
+    font-size: 25px;
+    letter-spacing: .06em;
+  }
+  .welcome-content {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    text-align: center;
+  }
+  .about-content {
+    padding: 0 15px;
+    row-gap: 22px;
+  }
+  .about-content .paragraph-l {
+    text-align: justify;
+  }
+  .about-content .paragraph-l:first-of-type {
+    padding-top: 2px;
+  }
+  .section.about-section {
+    row-gap: 42px;
+  }
+  .about-pets-image {
+    min-width: auto;
+    min-height: auto;
+    max-width: 260px;
+    max-height: 353.6px;
+    width: calc(100vw - 60px);
+    height: calc((100vw - 60px)/300 * 408);
+  }
+  .section.pets-section,
+  .section.help-section,
+  .section.donation-section {
+    row-gap: 42px;
+  }
+  .main-slider {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-column-gap: 80px;
+            column-gap: 80px;
+    row-gap: 20px;
+    -ms-flex-wrap: wrap-reverse;
+        flex-wrap: wrap-reverse;
+  }
+  .main-slider .slider-container {
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
+  }
+  .main-slider .slider-container :nth-of-type(n + 2) {
+    display: none;
+  }
+  .help-list {
+    -webkit-column-gap: 30px;
+            column-gap: 30px;
+    row-gap: 30px;
+  }
+  .help-list .help-item {
+    width: 130px;
+    height: 87px;
+    font-size: 15px;
+    line-height: 110%;
+    letter-spacing: 0.06em;
+  }
+  .help-list .help-item .help-item-img {
+    width: 50px;
+    height: 50px;
+  }
+  .help-list::after {
+    content: '';
+    width: 130px;
+    height: 87px;
+  }
+  .donation-content {
+    text-align: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .donation-content .section-title {
+    height: 64px;
+  }
+  .donation-content .donation-subtitle {
+    letter-spacing: 0px;
+    line-height: 160%;
+  }
+  .donation-content .button-donation {
+    font-size: 15px;
+    line-height: 160%;
+  }
+  .donation-content .donation-descr {
+    padding: 0 10px;
+    text-align: justify;
+  }
+  .donation-dog {
+    margin: 0;
+    width: 100%;
+    height: calc((100vw - 60px) / 260 *135);
+    max-width: 260px;
+    max-height: 135px;
+  }
+  .footer.container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 40px;
+  }
+  .footer.container .contacts-wrapper,
+  .footer.container .locations-wrapper {
+    padding: 0;
+    width: unset;
+    max-width: 300px;
+    row-gap: 40px;
+  }
+  .footer.container .contacts-wrapper {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .footer.container .locations-wrapper {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+  .footer.container .locations-wrapper .section-title {
+    margin: 0;
+    max-width: 270px;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .footer-dog {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    margin: 0;
+    width: 100%;
+    height: calc((100vw - 60px) / 260 *269);
+    max-width: 260px;
+    max-height: 269px;
+  }
+  .pets-page .section.pets-section {
+    row-gap: 42px;
+    padding-bottom: 42px;
+  }
+  .pets-slider .slider-container :nth-of-type(n + 4) {
+    display: none;
+  }
+  .pets-slider .slider-pagination {
+    width: 100%;
+    -webkit-column-gap: normal;
+            column-gap: normal;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
 }

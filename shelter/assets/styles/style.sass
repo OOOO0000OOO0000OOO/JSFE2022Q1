@@ -27,6 +27,11 @@ $color-primary-light: #FDDCC4
   letter-spacing: 0.06em
   color: $color-dark-l
 
+%h3-mobile
+  font-size: 25px
+  line-height: 130%
+  letter-spacing: 0.06em
+
 %h4
   font-family: 'Georgia'
   font-style: normal
@@ -201,6 +206,8 @@ h2.subtitle
     padding-top: 30px
     padding-bottom: 30px
 
+.burger
+  display: none
 
 .nav-list
   padding-top: 16px 
@@ -503,8 +510,10 @@ h2.subtitle
       height: 32px
       background: center center / 100% no-repeat url('../icons/pin.svg')
   .contacts-wrapper
+    max-width: 279px
     row-gap: 40px
   .locations-wrapper
+    max-width: 302px
     width: 302px
     row-gap: 32px
     .section-title
@@ -586,4 +595,196 @@ h2.subtitle
 
   .pets-page .section.pets-section
     row-gap: 30px
-    padding-bottom: 76px 
+    padding-bottom: 76px
+
+@media (max-width: 767px)
+  %h3
+    font-size: 25px
+    text-align: center
+
+  .section-title
+    height: auto
+  /********************/
+  .burger
+    display: block
+    position: fixed
+    top: 49px
+    left: calc( 50vw + 160px - 83px)
+    width: 30px
+    height: 22px
+    cursor: pointer
+    z-index: 30
+    background: none
+    outline: none
+    border: none
+    &::before
+      top: 0
+    &::after
+      bottom: 0
+    & .burger-line
+      top: calc(50% - 2px / 2)
+    &::before,
+    &::after,
+    & .burger-line
+      content: ""
+      position: absolute
+      left: 0
+      width: 30px
+      height: 2px
+      background-color: $color-primary
+      .pets-page &
+        background-color: #000
+      transition: background-color .3s ease-in-out
+    &:hover
+      &::before,
+      &::after,
+      .burger-line
+        background-color: $color-primary-light
+        .pets-page &
+          background-color: #000
+  /********************/
+  .navigation
+    display: none
+
+  .container,
+  .footer.container
+    width: 300px
+    padding-left: 10px
+    padding-right: 10px
+
+  .section:not(.welcome-section)
+    padding-top: 41px
+    padding-bottom: 42px
+
+  .welcome-section
+    row-gap: 105px
+    align-items: center
+    .welcome-dog
+      width: 260px
+      height: 271.77px
+      background-position: 0 0
+      align-self: flex-end
+
+  .welcome-title
+    font-size: 25px
+    letter-spacing: .06em
+
+  .welcome-content
+    align-items: center
+    text-align: center
+
+  .about-content
+    padding: 0 15px
+    row-gap: 22px
+    .paragraph-l
+      text-align: justify
+      &:first-of-type
+        padding-top: 2px
+
+  .section.about-section
+    row-gap: 42px
+
+  .about-pets-image
+    min-width: auto
+    min-height: auto
+    max-width: 260px
+    max-height: 353.6px
+    width: calc(100vw - 60px)
+    height: calc((100vw - 60px)/300 * 408)
+
+  .section.pets-section,
+  .section.help-section,
+  .section.donation-section
+    row-gap: 42px
+
+  .main-slider
+    justify-content: center
+    column-gap: 80px
+    row-gap: 20px
+    flex-wrap: wrap-reverse
+    .slider-container
+      order: 1
+      & :nth-of-type(n + 2)
+        display: none
+
+  .help-list
+    column-gap: 30px
+    row-gap: 30px
+    .help-item
+      width: 130px
+      height: 87px
+      font-size: 15px
+      line-height: 110%
+      letter-spacing: 0.06em
+      .help-item-img
+        width: 50px
+        height: 50px
+
+    &::after
+      content: ''
+      width: 130px
+      height: 87px
+
+  .donation-content
+    text-align: center
+    align-items: center
+    .section-title
+      height: 64px
+    .donation-subtitle
+      letter-spacing: 0px
+      line-height: 160%
+    .button-donation
+      font-size: 15px
+      line-height: 160%
+    .donation-descr
+      padding: 0 10px
+      text-align: justify
+
+  .donation-dog
+    margin: 0
+    width: 100%
+    height: calc((100vw - 60px) / 260 *135)
+    max-width: 260px
+    max-height: 135px
+
+  .footer.container
+    display: flex
+    flex-direction: column
+    row-gap: 40px
+    .contacts-wrapper,
+    .locations-wrapper
+      padding: 0
+      width: unset
+      max-width: 300px
+      row-gap: 40px
+    .contacts-wrapper
+      align-items: center
+    .locations-wrapper
+      .section-title
+        margin: 0
+        max-width: 270px
+        align-self: center
+      align-items: flex-start
+
+  .footer-dog
+    align-self: center
+    margin: 0
+    width: 100%
+    height: calc((100vw - 60px) / 260 *269)
+    max-width: 260px
+    max-height: 269px
+
+  .pets-page .section.pets-section 
+    row-gap: 42px
+    padding-bottom: 42px
+
+  .pets-slider 
+    .slider-container
+      & :nth-of-type(n + 4)
+        display: none
+    .slider-pagination
+      width: 100%
+      column-gap: normal
+      justify-content: space-between
+
+

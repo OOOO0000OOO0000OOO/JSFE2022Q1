@@ -240,6 +240,7 @@ h2.subtitle
   display: flex
   flex-direction: column
   row-gap: 42px
+  max-width: 460px
   .paragraph-l
     color: $color-dark-s
 
@@ -251,12 +252,14 @@ h2.subtitle
   @extend %button-primary
 
 .welcome-dog
-  background: 2px 0 / contain no-repeat url('../images/start-screen-puppy.png')
+  background: 0 0 / contain no-repeat url('../images/start-screen-puppy.png')
   min-width: 698px
   min-height: 728px
 
 .section-title
   @extend %h3
+  display: block
+  height: 90px
 
 .section:not(.welcome-section)
   padding-top: 80px
@@ -515,3 +518,72 @@ h2.subtitle
   position: sticky
   top: 0
   background: $color-light-xl
+
+@media (max-width: 1279px)
+  .container,
+  .footer.container
+    width: 708px
+    padding-left: 30px
+    padding-right: 30px
+
+  .header.container
+    &:not(.header-pets)
+      margin-bottom: -150px
+    padding-top: 30px
+
+  .welcome-section
+    padding-top: 150px 
+    flex-direction: column
+    .welcome-content
+      margin: 0 auto
+    .welcome-button
+      align-self: center
+    row-gap: 100px
+    .welcome-dog
+      min-width: auto
+      min-height: auto
+      height: 593px
+      background-position-x: calc(708px - 569px)
+
+  .section.about-section
+    flex-flow: column-reverse
+    row-gap: 80px
+
+  .main-slider .slider-container
+    column-gap: 40px
+    & :nth-of-type(n+3)
+      display: none
+
+  .help-list
+    column-gap: 60px
+    .help-item
+      width: 170px
+
+  .donation-section
+    flex-flow: column-reverse
+    row-gap: 60px
+
+  .donation-dog
+    margin-left: -1px
+    margin-bottom: 2px
+
+  .footer.container
+    column-gap: 60px
+    padding-top: 30px
+    flex-wrap: wrap
+    justify-content: center
+    .locations-wrapper,
+    .contacts-wrapper
+      padding-bottom: 65px 
+
+  .pets-slider
+    row-gap: 40px
+    .slider-container
+      column-gap: 40px
+      justify-content: center
+      & :nth-of-type(n + 7)
+        display: none
+
+  .pets-page .section.pets-section
+    row-gap: 30px
+    padding-bottom: 76px 

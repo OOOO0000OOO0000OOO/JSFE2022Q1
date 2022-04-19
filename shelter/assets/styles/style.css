@@ -294,6 +294,7 @@ h2.subtitle {
       -ms-flex-direction: column;
           flex-direction: column;
   row-gap: 42px;
+  max-width: 460px;
 }
 
 .welcome-content .paragraph-l {
@@ -305,9 +306,14 @@ h2.subtitle {
 }
 
 .welcome-dog {
-  background: 2px 0/contain no-repeat url("../images/start-screen-puppy.png");
+  background: 0 0/contain no-repeat url("../images/start-screen-puppy.png");
   min-width: 698px;
   min-height: 728px;
+}
+
+.section-title {
+  display: block;
+  height: 90px;
 }
 
 .section:not(.welcome-section) {
@@ -768,4 +774,104 @@ h2.subtitle {
   position: sticky;
   top: 0;
   background: #FFFFFF;
+}
+
+@media (max-width: 1279px) {
+  .container,
+  .footer.container {
+    width: 708px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+  .header.container {
+    padding-top: 30px;
+  }
+  .header.container:not(.header-pets) {
+    margin-bottom: -150px;
+  }
+  .welcome-section {
+    padding-top: 150px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 100px;
+  }
+  .welcome-section .welcome-content {
+    margin: 0 auto;
+  }
+  .welcome-section .welcome-button {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  .welcome-section .welcome-dog {
+    min-width: auto;
+    min-height: auto;
+    height: 593px;
+    background-position-x: calc(708px - 569px);
+  }
+  .section.about-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-flow: column-reverse;
+            flex-flow: column-reverse;
+    row-gap: 80px;
+  }
+  .main-slider .slider-container {
+    -webkit-column-gap: 40px;
+            column-gap: 40px;
+  }
+  .main-slider .slider-container :nth-of-type(n+3) {
+    display: none;
+  }
+  .help-list {
+    -webkit-column-gap: 60px;
+            column-gap: 60px;
+  }
+  .help-list .help-item {
+    width: 170px;
+  }
+  .donation-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-flow: column-reverse;
+            flex-flow: column-reverse;
+    row-gap: 60px;
+  }
+  .donation-dog {
+    margin-left: -1px;
+    margin-bottom: 2px;
+  }
+  .footer.container {
+    -webkit-column-gap: 60px;
+            column-gap: 60px;
+    padding-top: 30px;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .footer.container .locations-wrapper,
+  .footer.container .contacts-wrapper {
+    padding-bottom: 65px;
+  }
+  .pets-slider {
+    row-gap: 40px;
+  }
+  .pets-slider .slider-container {
+    -webkit-column-gap: 40px;
+            column-gap: 40px;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .pets-slider .slider-container :nth-of-type(n + 7) {
+    display: none;
+  }
+  .pets-page .section.pets-section {
+    row-gap: 30px;
+    padding-bottom: 76px;
+  }
 }

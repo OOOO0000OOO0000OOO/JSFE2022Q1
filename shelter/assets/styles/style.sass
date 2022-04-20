@@ -155,6 +155,8 @@ $color-primary-light: #FDDCC4
 
 html
   scroll-behavior: smooth
+  &::-webkit-scrollbar 
+    width: 0
 
 .container
   margin: 0 auto
@@ -607,7 +609,7 @@ h2.subtitle
   /********************/
   .burger
     display: block
-    position: fixed
+    position: absolute
     top: 49px
     left: calc( 50vw + 160px - 83px)
     width: 30px
@@ -786,5 +788,4 @@ h2.subtitle
       width: 100%
       column-gap: normal
       justify-content: space-between
-
 

@@ -163,6 +163,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html::-webkit-scrollbar {
+  width: 0;
+}
+
 .container {
   margin: 0 auto;
   width: 1200px;
@@ -893,7 +897,7 @@ h2.subtitle {
   /********************/
   .burger {
     display: block;
-    position: fixed;
+    position: absolute;
     top: 49px;
     left: calc( 50vw + 160px - 83px);
     width: 30px;

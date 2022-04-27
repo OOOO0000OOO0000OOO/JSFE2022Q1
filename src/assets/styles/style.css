@@ -105,8 +105,8 @@ h2.subtitle {
   line-height: 130%;
   letter-spacing: 0.06em;
   color: #292929;
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
+  -webkit-transition: background .3s ease-in-out, border-color .3s ease-in-out;
+  transition: background .3s ease-in-out, border-color .3s ease-in-out;
 }
 
 .button-arrow:hover, .button:hover, .button-primary:hover, .pet-card:hover .button {
@@ -254,8 +254,8 @@ h2.subtitle {
   color: #CDCDCD;
   letter-spacing: 0.005em;
   text-decoration: none;
-  -webkit-transition: .3s ease-in-out;
-  transition: .3s ease-in-out;
+  -webkit-transition: color .3s ease-in-out;
+  transition: color .3s ease-in-out;
 }
 
 .header-pets .nav-item .nav-link {
@@ -275,11 +275,11 @@ h2.subtitle {
   color: #292929;
 }
 
-.nav-item:hover .nav-link {
+.nav-item .nav-link:not(.nav-active):hover {
   color: #FAFAFA;
 }
 
-.header-pets .nav-item:hover .nav-link {
+.header-pets .nav-item .nav-link {
   color: #292929;
 }
 
@@ -786,6 +786,10 @@ h2.subtitle {
   background: #FFFFFF;
 }
 
+.header .navigation .logo {
+  display: none;
+}
+
 @media (max-width: 1279px) {
   .container,
   .footer.container {
@@ -894,7 +898,16 @@ h2.subtitle {
   .section-title {
     height: auto;
   }
-  /********************/
+  body {
+    position: relative;
+    overflow-x: hidden;
+  }
+  body.overlay-active {
+    overflow-y: hidden;
+  }
+  .header.container {
+    position: relative;
+  }
   .burger {
     display: block;
     position: absolute;
@@ -907,6 +920,10 @@ h2.subtitle {
     background: none;
     outline: none;
     border: none;
+    -webkit-transition: -webkit-transform .3s ease-in-out;
+    transition: -webkit-transform .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+    transition: transform .3s ease-in-out, -webkit-transform .3s ease-in-out;
   }
   .burger::before {
     top: 0;
@@ -940,10 +957,81 @@ h2.subtitle {
   .burger:hover .burger-line {
     background-color: #000;
   }
-  /********************/
   .navigation {
-    display: none;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+    right: -320px;
+    width: 320px;
+    height: 100vh;
+    padding-top: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    background-color: #292929;
+    -webkit-transition: right .3s ease-in-out;
+    transition: right .3s ease-in-out;
   }
+  .pets-page .navigation {
+    background-color: #FFFFFF;
+  }
+  .header .navigation .logo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 10px;
+    height: 60px;
+  }
+  .nav-list {
+    width: 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: calc(100vh - 90px);
+    margin-left: 39px;
+    padding: 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    row-gap: 40px;
+  }
+  .nav-list .nav-item .nav-link {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 160%;
+  }
+  .overlay {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 100%;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1;
+  }
+  .header.active .overlay {
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    -webkit-transition: background-color .5s ease-in-out;
+    transition: background-color .5s ease-in-out;
+  }
+  .header.active .navigation {
+    right: 0;
+  }
+  .header.active .burger {
+    -webkit-transform: rotate(90deg);
+            transform: rotate(90deg);
+  }
+  /********************/
   .container,
   .footer.container {
     width: 300px;

@@ -11,8 +11,8 @@ export enum Endpoints {
 type Method = 'GET' | 'POST';
 
 class Loader<T> {
-    readonly baseLink: string;
-    readonly options: Options<T>;
+    protected readonly baseLink: string;
+    protected readonly options: Options<T>;
     constructor(baseLink: string, options: Options<T>) {
         this.baseLink = baseLink;
         this.options = options;

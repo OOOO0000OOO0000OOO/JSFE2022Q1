@@ -3,8 +3,8 @@ import AppView from '../view/appView';
 import { IData } from './IData';
 
 class App {
-    readonly controller: AppController;
-    readonly view: AppView;
+    private readonly controller: AppController;
+    private readonly view: AppView;
 
     constructor() {
         this.controller = new AppController();

@@ -12,10 +12,15 @@ class App {
     }
 
     public start(): void {
+        this.view.drawCategories();
+
+        (<HTMLElement>document.querySelector('.categories')).addEventListener('click', (e: MouseEvent) =>
+            this.controller.getSources(e, (data: IData) => this.view.drawSources(data))
+        );
+
         (<HTMLElement>document.querySelector('.sources')).addEventListener('click', (e: MouseEvent) =>
             this.controller.getNews(e, (data: IData) => this.view.drawNews(data))
         );
-        this.controller.getSources((data: IData): void => this.view.drawSources(data));
     }
 }
 

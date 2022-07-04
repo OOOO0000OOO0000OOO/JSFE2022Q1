@@ -4,13 +4,29 @@ import { IData } from '../app/IData';
 import { Callback } from '../types/Callback';
 
 class AppController extends AppLoader {
-    public getSources(callback: Callback<IData>): void {
-        super.getResp(
-            {
-                endpoint: Endpoints.sources,
-            },
-            callback
-        );
+    public getSources(e: Event, callback: Callback<IData>): void {
+        let target = <HTMLElement>e.target;
+        const newsContainer = <HTMLElement>e.currentTarget;
+
+        while (target !== newsContainer) {
+            if (target.classList.contains('category__item')) {
+                const categoryId = <string>target.getAttribute('data-category-id');
+                if (newsContainer.getAttribute('data-category') !== categoryId) {
+                    newsContainer.setAttribute('data-category', categoryId);
+                    super.getResp(
+                        {
+                            endpoint: Endpoints.sources,
+                            options: {
+                                category: categoryId,
+                            },
+                        },
+                        callback
+                    );
+                }
+                return;
+            }
+            target = <HTMLElement>target.parentNode;
+        }
     }
 
     public getNews(e: Event, callback: Callback<IData>): void {

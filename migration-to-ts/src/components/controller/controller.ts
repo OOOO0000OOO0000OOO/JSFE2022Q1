@@ -1,8 +1,7 @@
 import AppLoader from './appLoader';
 import { Endpoints } from './loader';
 import { IData } from '../app/IData';
-
-type Callback<T> = (data: T) => void;
+import { Callback } from '../types/Callback';
 
 class AppController extends AppLoader {
     public getSources(callback: Callback<IData>): void {

@@ -1,4 +1,5 @@
 import { IData } from '../app/IData';
+import { Callback } from '../types/Callback';
 
 type Options<T> = Record<string, T>;
 
@@ -6,8 +7,6 @@ export enum Endpoints {
     sources = 'sources',
     everything = 'everything',
 }
-
-type Callback<T> = (data: T) => void;
 
 type Method = 'GET' | 'POST';
 

@@ -3,15 +3,15 @@ import AppView from '../view/appView';
 import { IData } from './IData';
 
 class App {
-    controller: AppController;
-    view: AppView;
+    readonly controller: AppController;
+    readonly view: AppView;
 
     constructor() {
         this.controller = new AppController();
         this.view = new AppView();
     }
 
-    start() {
+    public start(): void {
         (<HTMLElement>document.querySelector('.sources')).addEventListener('click', (e: MouseEvent) =>
             this.controller.getNews(e, (data: IData) => this.view.drawNews(data))
         );

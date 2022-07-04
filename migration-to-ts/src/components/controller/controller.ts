@@ -5,7 +5,7 @@ import { IData } from '../app/IData';
 type Callback<T> = (data: T) => void;
 
 class AppController extends AppLoader {
-    getSources(callback: Callback<IData>) {
+    public getSources(callback: Callback<IData>): void {
         super.getResp(
             {
                 endpoint: Endpoints.sources,
@@ -14,7 +14,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: Callback<IData>) {
+    public getNews(e: Event, callback: Callback<IData>): void {
         let target = <HTMLElement>e.target;
         const newsContainer = <HTMLElement>e.currentTarget;
 

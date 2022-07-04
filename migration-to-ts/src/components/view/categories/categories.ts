@@ -11,7 +11,7 @@ enum CategoryOptions {
 }
 
 class Categories {
-    static options = CategoryOptions;
+    public static options = CategoryOptions;
 
     public draw(): void {
         const fragment = document.createDocumentFragment();

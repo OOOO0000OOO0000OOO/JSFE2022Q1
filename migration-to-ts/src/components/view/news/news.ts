@@ -14,7 +14,7 @@ class News {
             if (idx % 2) (<HTMLTemplateElement>newsClone.querySelector('.news__item')).classList.add('alt');
 
             (<HTMLTemplateElement>newsClone.querySelector('.news__meta-photo')).style.backgroundImage = `url(${
-                item.urlToImage || 'img/news_placeholder.jpg'
+                item.urlToImage || 'https://images.unsplash.com/photo-1635942046031-041e9baea8bd'
             })`;
             (<HTMLTemplateElement>newsClone.querySelector('.news__meta-author')).textContent =
                 item.author || item.source.name;

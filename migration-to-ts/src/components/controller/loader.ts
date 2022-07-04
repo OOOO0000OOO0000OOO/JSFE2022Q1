@@ -2,7 +2,10 @@ import { IData } from '../app/IData';
 
 type Options<T> = Record<string, T>;
 
-type Endpoint = 'sources' | 'everything';
+export enum Endpoints {
+    sources = 'sources',
+    everything = 'everything',
+}
 
 type Callback<T> = (data: T) => void;
 
@@ -17,7 +20,7 @@ class Loader<T> {
     }
 
     getResp(
-        { endpoint, options }: { endpoint: Endpoint; options?: Options<T> },
+        { endpoint, options }: { endpoint: Endpoints; options?: Options<T> },
         callback: Callback<IData> = () => {
             console.error('No callback for GET response');
         }
@@ -35,7 +38,7 @@ class Loader<T> {
         return res;
     }
 
-    makeUrl(options: Options<T>, endpoint: Endpoint): string {
+    makeUrl(options: Options<T>, endpoint: Endpoints): string {
         const urlOptions = { ...this.options, ...options };
         let url = `${this.baseLink}${endpoint}?`;
 
@@ -46,7 +49,7 @@ class Loader<T> {
         return url.slice(0, -1);
     }
 
-    load(method: Method, endpoint: Endpoint, callback: Callback<IData>, options: Options<T> = {}): void {
+    load(method: Method, endpoint: Endpoints, callback: Callback<IData>, options: Options<T> = {}): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res: Response): Promise<IData> => res.json())

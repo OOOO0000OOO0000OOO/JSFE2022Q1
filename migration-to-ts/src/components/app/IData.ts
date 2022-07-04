@@ -1,10 +1,10 @@
-export type source = {
+export interface Source {
     id: string;
     name: string;
-};
+}
 
 export interface IArticle {
-    source: source;
+    source: Source;
     author: string;
     title: string;
     description: string;
@@ -14,7 +14,7 @@ export interface IArticle {
     content: string;
 }
 
-export interface ISource extends source {
+export interface ISource extends Source {
     description: string;
     url: string;
     category: string;
@@ -23,6 +23,6 @@ export interface ISource extends source {
 }
 
 export interface IData {
-    articles: IArticle[];
-    sources: ISource[];
+    articles?: IArticle[];
+    sources?: ISource[];
 }

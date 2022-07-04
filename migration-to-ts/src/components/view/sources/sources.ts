@@ -1,20 +1,20 @@
 import './sources.css';
-
+import { ISource } from '../../app/IData';
 class Sources {
-    draw(data) {
+    draw(data: ISource[]) {
         const fragment = document.createDocumentFragment();
-        const sourceItemTemp = document.querySelector('#sourceItemTemp');
+        const sourceItemTemp = <HTMLTemplateElement>document.querySelector('#sourceItemTemp');
 
         data.forEach((item) => {
-            const sourceClone = sourceItemTemp.content.cloneNode(true);
+            const sourceClone = <HTMLTemplateElement>sourceItemTemp.content.cloneNode(true);
 
-            sourceClone.querySelector('.source__item-name').textContent = item.name;
-            sourceClone.querySelector('.source__item').setAttribute('data-source-id', item.id);
+            (<HTMLTemplateElement>sourceClone.querySelector('.source__item-name')).textContent = item.name;
+            (<HTMLTemplateElement>sourceClone.querySelector('.source__item')).setAttribute('data-source-id', item.id);
 
             fragment.append(sourceClone);
         });
 
-        document.querySelector('.sources').append(fragment);
+        (<HTMLElement>document.querySelector('.sources')).append(fragment);
     }
 }
 

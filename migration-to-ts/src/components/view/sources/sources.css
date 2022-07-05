@@ -4,7 +4,8 @@
     width: 100%;
     align-items: center;
     font: 300 1em 'Fira Sans', sans-serif;
-    justify-content: space-between;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .source__item {
@@ -19,12 +20,6 @@
     cursor: pointer;
 }
 
-.sources.buttons::after {
-    content: '';
-    display: block;
-    flex-grow: .8;
-}
-
 .source__item:hover,
 .source__item:focus {
     border-color: #3fcc59;
@@ -36,4 +31,18 @@
 .source__item-name {
     font-weight: 400;
     white-space: nowrap;
+}
+  
+@media (max-width: 768px) and (min-width: 481px) {
+    .sources {
+      max-width: 500px;
+      align-content: flex-start;
+    }
+}
+  
+@media (max-width: 480px) {
+    .sources {
+      flex-direction: column;
+      flex-wrap: nowrap;
+    }
 }

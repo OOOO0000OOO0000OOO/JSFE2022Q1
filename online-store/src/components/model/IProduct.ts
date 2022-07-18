@@ -3,7 +3,7 @@ interface IProduct {
   name: string;
   desription: string;
   author: string;
-  year: string;
+  year: number;
   movement: string;
   medium: string;
   material: string;

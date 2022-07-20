@@ -41,3 +41,5 @@ export default interface IFilterData {
   material?: Materials[];
   unique?: boolean;
 }
+
+export { Materials, Mediums, Movements };

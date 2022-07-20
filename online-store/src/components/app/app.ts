@@ -11,7 +11,7 @@ class Application extends Control {
   constructor({ parentNode }: { parentNode: HTMLElement }) {
     super({ parentNode });
     this.model = new StoreDataModel();
-    this.view = new View();
+    this.view = new View({ parentNode: this.node });
     this.controller = new Controller(this.model, this.view);
   }
 }

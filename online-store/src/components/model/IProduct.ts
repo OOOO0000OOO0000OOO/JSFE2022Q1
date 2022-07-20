@@ -1,7 +1,7 @@
 interface IProduct {
   id: number;
   name: string;
-  desription: string;
+  description: string;
   author: string;
   year: number;
   movement: string;

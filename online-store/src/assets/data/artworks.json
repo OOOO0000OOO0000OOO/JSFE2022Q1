@@ -2,7 +2,7 @@
   {
     "id": 0,
     "name": "Voluptate Quis",
-    "desription": "Pariatur magna Lorem mollit quis exercitation adipisicing cupidatat adipisicing cupidatat occaecat cupidatat exercitation ullamco.",
+    "description": "Pariatur magna Lorem mollit quis exercitation adipisicing cupidatat adipisicing cupidatat occaecat cupidatat exercitation ullamco.",
     "author": "Tanya Terrell",
     "year": 1998,
     "movement": "post-modernism",
@@ -16,7 +16,7 @@
   {
     "id": 1,
     "name": "Eiusmod Est Anim",
-    "desription": "Officia ipsum id cillum minim minim dolor aliqua.",
+    "description": "Officia ipsum id cillum minim minim dolor aliqua.",
     "author": "Phelps Downs",
     "year": 2000,
     "movement": "minimalism",
@@ -30,7 +30,7 @@
   {
     "id": 2,
     "name": "Ea Enim Esse",
-    "desription": "Nostrud amet Lorem quis aute excepteur et magna cupidatat elit cupidatat.",
+    "description": "Nostrud amet Lorem quis aute excepteur et magna cupidatat elit cupidatat.",
     "author": "Gay Talley",
     "year": 2010,
     "movement": "ancientism",
@@ -44,7 +44,7 @@
   {
     "id": 3,
     "name": "Tempor Laboris",
-    "desription": "Duis eiusmod id esse magna exercitation.",
+    "description": "Duis eiusmod id esse magna exercitation.",
     "author": "Giles Valdez",
     "year": 2003,
     "movement": "minimalism",
@@ -58,7 +58,7 @@
   {
     "id": 4,
     "name": "Cupidatat Occaecat",
-    "desription": "Velit reprehenderit culpa culpa reprehenderit et.",
+    "description": "Velit reprehenderit culpa culpa reprehenderit et.",
     "author": "Forbes Barry",
     "year": 2006,
     "movement": "post-modernism",
@@ -72,7 +72,7 @@
   {
     "id": 5,
     "name": "Fugiat Eiusmod Eu",
-    "desription": "Nostrud consequat sit nostrud tempor officia.",
+    "description": "Nostrud consequat sit nostrud tempor officia.",
     "author": "Meghan Sanders",
     "year": 1998,
     "movement": "ancientism",
@@ -86,7 +86,7 @@
   {
     "id": 6,
     "name": "Consequat Id",
-    "desription": "Elit aliqua ad et eu aliquip sit consectetur magna tempor ipsum ipsum.",
+    "description": "Elit aliqua ad et eu aliquip sit consectetur magna tempor ipsum ipsum.",
     "author": "Hurley Carpenter",
     "year": 2005,
     "movement": "pre-modernism",
@@ -100,7 +100,7 @@
   {
     "id": 7,
     "name": "In Esse Magna",
-    "desription": "Lorem esse deserunt pariatur eiusmod laborum qui pariatur.",
+    "description": "Lorem esse deserunt pariatur eiusmod laborum qui pariatur.",
     "author": "Trujillo Porter",
     "year": 2013,
     "movement": "pre-modernism",
@@ -114,7 +114,7 @@
   {
     "id": 8,
     "name": "Elit Duis Ea",
-    "desription": "Officia reprehenderit ad adipisicing mollit exercitation quis incididunt elit officia anim aliquip aliqua.",
+    "description": "Officia reprehenderit ad adipisicing mollit exercitation quis incididunt elit officia anim aliquip aliqua.",
     "author": "Lindsay Hale",
     "year": 2018,
     "movement": "realism",
@@ -128,7 +128,7 @@
   {
     "id": 9,
     "name": "Laborum Anim Anim",
-    "desription": "Proident voluptate et ex enim sit sunt ullamco non voluptate est culpa sit ullamco.",
+    "description": "Proident voluptate et ex enim sit sunt ullamco non voluptate est culpa sit ullamco.",
     "author": "Hardin King",
     "year": 2008,
     "movement": "minimalism",
@@ -142,7 +142,7 @@
   {
     "id": 10,
     "name": "Eiusmod Reprehenderit Minim",
-    "desription": "Sint eu adipisicing sint veniam magna et cupidatat voluptate incididunt et proident.",
+    "description": "Sint eu adipisicing sint veniam magna et cupidatat voluptate incididunt et proident.",
     "author": "Paula Dunn",
     "year": 2016,
     "movement": "realism",
@@ -156,7 +156,7 @@
   {
     "id": 11,
     "name": "Anim Cillum Sunt",
-    "desription": "Lorem amet laboris eu et esse qui eu.",
+    "description": "Lorem amet laboris eu et esse qui eu.",
     "author": "Holloway Villarreal",
     "year": 2015,
     "movement": "ancientism",
@@ -170,7 +170,7 @@
   {
     "id": 12,
     "name": "Occaecat Quis",
-    "desription": "Consectetur incididunt eu est aliqua sint occaecat irure aute.",
+    "description": "Consectetur incididunt eu est aliqua sint occaecat irure aute.",
     "author": "Mcconnell Noel",
     "year": 2008,
     "movement": "ancientism",
@@ -184,7 +184,7 @@
   {
     "id": 13,
     "name": "Proident",
-    "desription": "Laborum excepteur et consequat fugiat exercitation et commodo consequat cillum voluptate laboris labore.",
+    "description": "Laborum excepteur et consequat fugiat exercitation et commodo consequat cillum voluptate laboris labore.",
     "author": "Hebert Morales",
     "year": 2010,
     "movement": "realism",
@@ -198,7 +198,7 @@
   {
     "id": 14,
     "name": "Ipsum Minim Nostrud",
-    "desription": "Elit anim aliqua non incididunt laboris proident sint ea tempor occaecat velit laboris ut fugiat.",
+    "description": "Elit anim aliqua non incididunt laboris proident sint ea tempor occaecat velit laboris ut fugiat.",
     "author": "Shelley Daniel",
     "year": 2021,
     "movement": "minimalism",
@@ -212,7 +212,7 @@
   {
     "id": 15,
     "name": "Et",
-    "desription": "Cupidatat aliquip tempor dolore ea fugiat.",
+    "description": "Cupidatat aliquip tempor dolore ea fugiat.",
     "author": "Slater Mitchell",
     "year": 2006,
     "movement": "modernism",
@@ -226,7 +226,7 @@
   {
     "id": 16,
     "name": "Est",
-    "desription": "Cupidatat laborum aliquip sunt in do.",
+    "description": "Cupidatat laborum aliquip sunt in do.",
     "author": "Doris Nelson",
     "year": 2006,
     "movement": "minimalism",
@@ -240,7 +240,7 @@
   {
     "id": 17,
     "name": "Proident Nostrud Incididunt",
-    "desription": "Elit ullamco est officia consectetur dolore nulla Lorem ullamco.",
+    "description": "Elit ullamco est officia consectetur dolore nulla Lorem ullamco.",
     "author": "Eileen Rich",
     "year": 2014,
     "movement": "ancientism",
@@ -254,7 +254,7 @@
   {
     "id": 18,
     "name": "In Id In",
-    "desription": "Aute excepteur est ea mollit nisi elit.",
+    "description": "Aute excepteur est ea mollit nisi elit.",
     "author": "Ofelia Mcleod",
     "year": 2012,
     "movement": "pre-modernism",
@@ -268,7 +268,7 @@
   {
     "id": 19,
     "name": "Velit Sint Pariatur",
-    "desription": "Minim laboris consectetur enim eiusmod incididunt officia ipsum cupidatat ex ullamco reprehenderit.",
+    "description": "Minim laboris consectetur enim eiusmod incididunt officia ipsum cupidatat ex ullamco reprehenderit.",
     "author": "Leticia Romero",
     "year": 2013,
     "movement": "ancientism",
@@ -282,7 +282,7 @@
   {
     "id": 20,
     "name": "Commodo Ut Commodo",
-    "desription": "Proident laborum culpa ex irure magna est excepteur fugiat minim commodo.",
+    "description": "Proident laborum culpa ex irure magna est excepteur fugiat minim commodo.",
     "author": "Bruce Kennedy",
     "year": 2014,
     "movement": "post-modernism",
@@ -296,7 +296,7 @@
   {
     "id": 21,
     "name": "Consequat Voluptate Laboris",
-    "desription": "Ad adipisicing veniam id pariatur laborum magna labore voluptate fugiat et deserunt nostrud fugiat cupidatat.",
+    "description": "Ad adipisicing veniam id pariatur laborum magna labore voluptate fugiat et deserunt nostrud fugiat cupidatat.",
     "author": "Baxter Kim",
     "year": 2014,
     "movement": "realism",
@@ -310,7 +310,7 @@
   {
     "id": 22,
     "name": "Ex",
-    "desription": "Do fugiat sit incididunt nisi eu ad nostrud nisi labore consectetur aliqua ullamco in ex.",
+    "description": "Do fugiat sit incididunt nisi eu ad nostrud nisi labore consectetur aliqua ullamco in ex.",
     "author": "Mccullough Black",
     "year": 2009,
     "movement": "modernism",
@@ -324,7 +324,7 @@
   {
     "id": 23,
     "name": "Mollit Non Esse",
-    "desription": "Minim commodo in ut officia culpa ad reprehenderit.",
+    "description": "Minim commodo in ut officia culpa ad reprehenderit.",
     "author": "Mercado Baxter",
     "year": 2012,
     "movement": "post-modernism",
@@ -338,7 +338,7 @@
   {
     "id": 24,
     "name": "Sunt Tempor Duis",
-    "desription": "Eiusmod labore reprehenderit ipsum culpa aliqua.",
+    "description": "Eiusmod labore reprehenderit ipsum culpa aliqua.",
     "author": "Vivian Hobbs",
     "year": 2011,
     "movement": "realism",
@@ -352,7 +352,7 @@
   {
     "id": 25,
     "name": "Lorem",
-    "desription": "Elit enim dolor aute et enim.",
+    "description": "Elit enim dolor aute et enim.",
     "author": "Claudia Coffey",
     "year": 2000,
     "movement": "realism",
@@ -366,7 +366,7 @@
   {
     "id": 26,
     "name": "Sunt Fugiat Amet",
-    "desription": "Consectetur sunt elit aliquip aute esse.",
+    "description": "Consectetur sunt elit aliquip aute esse.",
     "author": "Amalia Grant",
     "year": 2003,
     "movement": "post-modernism",
@@ -380,7 +380,7 @@
   {
     "id": 27,
     "name": "Consectetur Sit",
-    "desription": "Deserunt dolore labore pariatur officia.",
+    "description": "Deserunt dolore labore pariatur officia.",
     "author": "Roberta Mccormick",
     "year": 2022,
     "movement": "minimalism",
@@ -394,7 +394,7 @@
   {
     "id": 28,
     "name": "Est Eiusmod Ex",
-    "desription": "Voluptate sit eiusmod aliquip sunt irure laborum dolore nostrud duis aliqua.",
+    "description": "Voluptate sit eiusmod aliquip sunt irure laborum dolore nostrud duis aliqua.",
     "author": "Mitchell Farrell",
     "year": 2013,
     "movement": "post-modernism",
@@ -408,7 +408,7 @@
   {
     "id": 29,
     "name": "Reprehenderit Deserunt Excepteur",
-    "desription": "Laboris magna in ullamco eiusmod adipisicing excepteur exercitation exercitation labore exercitation nostrud est.",
+    "description": "Laboris magna in ullamco eiusmod adipisicing excepteur exercitation exercitation labore exercitation nostrud est.",
     "author": "Anita Mcclain",
     "year": 2002,
     "movement": "minimalism",
@@ -422,7 +422,7 @@
   {
     "id": 30,
     "name": "Exercitation Culpa",
-    "desription": "Proident id duis non Lorem qui occaecat exercitation nostrud consequat mollit duis sint.",
+    "description": "Proident id duis non Lorem qui occaecat exercitation nostrud consequat mollit duis sint.",
     "author": "Mara Cash",
     "year": 2003,
     "movement": "realism",
@@ -436,7 +436,7 @@
   {
     "id": 31,
     "name": "Cillum",
-    "desription": "Do veniam ipsum minim eiusmod culpa commodo cillum sunt fugiat amet.",
+    "description": "Do veniam ipsum minim eiusmod culpa commodo cillum sunt fugiat amet.",
     "author": "Henry Golden",
     "year": 1996,
     "movement": "minimalism",
@@ -450,7 +450,7 @@
   {
     "id": 32,
     "name": "Exercitation",
-    "desription": "In Lorem dolor exercitation deserunt reprehenderit irure eiusmod.",
+    "description": "In Lorem dolor exercitation deserunt reprehenderit irure eiusmod.",
     "author": "Lambert Orr",
     "year": 2001,
     "movement": "post-modernism",
@@ -464,7 +464,7 @@
   {
     "id": 33,
     "name": "Officia Ipsum In",
-    "desription": "Sunt esse culpa pariatur enim eu incididunt non culpa.",
+    "description": "Sunt esse culpa pariatur enim eu incididunt non culpa.",
     "author": "Schneider Yang",
     "year": 2010,
     "movement": "pre-modernism",
@@ -478,7 +478,7 @@
   {
     "id": 34,
     "name": "Aliquip Mollit Amet",
-    "desription": "Officia ut reprehenderit ut nisi duis minim voluptate non amet.",
+    "description": "Officia ut reprehenderit ut nisi duis minim voluptate non amet.",
     "author": "Banks Erickson",
     "year": 2008,
     "movement": "pre-modernism",
@@ -492,7 +492,7 @@
   {
     "id": 35,
     "name": "Adipisicing Ullamco Nostrud",
-    "desription": "Amet laboris irure sint Lorem ipsum officia laboris deserunt minim nisi excepteur.",
+    "description": "Amet laboris irure sint Lorem ipsum officia laboris deserunt minim nisi excepteur.",
     "author": "Buchanan Cooke",
     "year": 2014,
     "movement": "ancientism",
@@ -506,7 +506,7 @@
   {
     "id": 36,
     "name": "Officia",
-    "desription": "Occaecat voluptate veniam ut elit ipsum laboris incididunt amet cupidatat sunt ex.",
+    "description": "Occaecat voluptate veniam ut elit ipsum laboris incididunt amet cupidatat sunt ex.",
     "author": "Holly Le",
     "year": 1999,
     "movement": "modernism",
@@ -520,7 +520,7 @@
   {
     "id": 37,
     "name": "Reprehenderit Officia",
-    "desription": "Ea cupidatat ipsum culpa ea nostrud occaecat elit qui pariatur.",
+    "description": "Ea cupidatat ipsum culpa ea nostrud occaecat elit qui pariatur.",
     "author": "Perry Bell",
     "year": 2021,
     "movement": "ancientism",
@@ -534,7 +534,7 @@
   {
     "id": 38,
     "name": "Consequat Excepteur Dolor",
-    "desription": "Minim deserunt do velit do ex.",
+    "description": "Minim deserunt do velit do ex.",
     "author": "Alvarado Fernandez",
     "year": 2010,
     "movement": "ancientism",
@@ -548,7 +548,7 @@
   {
     "id": 39,
     "name": "Excepteur Culpa Aliqua",
-    "desription": "Adipisicing reprehenderit officia esse laborum deserunt amet sint reprehenderit aliquip proident proident.",
+    "description": "Adipisicing reprehenderit officia esse laborum deserunt amet sint reprehenderit aliquip proident proident.",
     "author": "Ella Velazquez",
     "year": 2021,
     "movement": "modernism",
@@ -562,7 +562,7 @@
   {
     "id": 40,
     "name": "Lorem Cillum Elit",
-    "desription": "Aliqua mollit nisi officia voluptate ea aliquip esse et quis esse excepteur commodo est.",
+    "description": "Aliqua mollit nisi officia voluptate ea aliquip esse et quis esse excepteur commodo est.",
     "author": "Nunez Bradley",
     "year": 2003,
     "movement": "pre-modernism",
@@ -576,7 +576,7 @@
   {
     "id": 41,
     "name": "Aliquip Ex",
-    "desription": "Nisi ut id amet sunt aliqua adipisicing elit.",
+    "description": "Nisi ut id amet sunt aliqua adipisicing elit.",
     "author": "Catherine Jefferson",
     "year": 2011,
     "movement": "pre-modernism",
@@ -590,7 +590,7 @@
   {
     "id": 42,
     "name": "Cillum",
-    "desription": "Laboris esse consectetur nisi dolore irure consequat in adipisicing aliqua amet ad proident.",
+    "description": "Laboris esse consectetur nisi dolore irure consequat in adipisicing aliqua amet ad proident.",
     "author": "Casey Ewing",
     "year": 2001,
     "movement": "minimalism",
@@ -604,7 +604,7 @@
   {
     "id": 43,
     "name": "Nulla Tempor",
-    "desription": "Excepteur cillum cupidatat consequat sit.",
+    "description": "Excepteur cillum cupidatat consequat sit.",
     "author": "Amie Willis",
     "year": 1998,
     "movement": "modernism",
@@ -618,7 +618,7 @@
   {
     "id": 44,
     "name": "Eu Nulla",
-    "desription": "Cillum do laborum quis nulla dolor in irure cupidatat commodo nostrud.",
+    "description": "Cillum do laborum quis nulla dolor in irure cupidatat commodo nostrud.",
     "author": "Gilbert Hart",
     "year": 2000,
     "movement": "post-modernism",
@@ -632,7 +632,7 @@
   {
     "id": 45,
     "name": "Non Nisi",
-    "desription": "Ullamco anim ea minim quis ad mollit Lorem excepteur nulla in nulla excepteur cillum.",
+    "description": "Ullamco anim ea minim quis ad mollit Lorem excepteur nulla in nulla excepteur cillum.",
     "author": "Munoz Nunez",
     "year": 2007,
     "movement": "pre-modernism",
@@ -646,7 +646,7 @@
   {
     "id": 46,
     "name": "Cillum Ex",
-    "desription": "Adipisicing magna ullamco dolor et mollit duis anim veniam.",
+    "description": "Adipisicing magna ullamco dolor et mollit duis anim veniam.",
     "author": "Leila Daugherty",
     "year": 2015,
     "movement": "ancientism",
@@ -660,7 +660,7 @@
   {
     "id": 47,
     "name": "Ad Exercitation",
-    "desription": "Eu culpa incididunt velit cupidatat dolore minim nulla magna sit et labore ipsum.",
+    "description": "Eu culpa incididunt velit cupidatat dolore minim nulla magna sit et labore ipsum.",
     "author": "Janell Harper",
     "year": 2021,
     "movement": "modernism",
@@ -674,7 +674,7 @@
   {
     "id": 48,
     "name": "Exercitation",
-    "desription": "Quis aute nulla aliquip laborum voluptate pariatur do nulla sint laborum.",
+    "description": "Quis aute nulla aliquip laborum voluptate pariatur do nulla sint laborum.",
     "author": "Kimberly Dean",
     "year": 2007,
     "movement": "pre-modernism",
@@ -688,7 +688,7 @@
   {
     "id": 49,
     "name": "Tempor",
-    "desription": "Qui culpa sint nisi reprehenderit minim excepteur.",
+    "description": "Qui culpa sint nisi reprehenderit minim excepteur.",
     "author": "Mccall Finley",
     "year": 2011,
     "movement": "realism",
@@ -702,7 +702,7 @@
   {
     "id": 50,
     "name": "Cillum",
-    "desription": "Voluptate aute culpa esse ut ex ad laboris commodo consequat ad est.",
+    "description": "Voluptate aute culpa esse ut ex ad laboris commodo consequat ad est.",
     "author": "Beverly Cline",
     "year": 2000,
     "movement": "pre-modernism",
@@ -716,7 +716,7 @@
   {
     "id": 51,
     "name": "Adipisicing",
-    "desription": "Deserunt ex culpa deserunt veniam mollit incididunt ullamco amet tempor amet sunt sint sunt culpa.",
+    "description": "Deserunt ex culpa deserunt veniam mollit incididunt ullamco amet tempor amet sunt sint sunt culpa.",
     "author": "Ferrell Ashley",
     "year": 2009,
     "movement": "pre-modernism",
@@ -730,7 +730,7 @@
   {
     "id": 52,
     "name": "Lorem Cillum Sint",
-    "desription": "Nulla minim ipsum id consequat et fugiat est officia cupidatat laborum eu excepteur aliquip.",
+    "description": "Nulla minim ipsum id consequat et fugiat est officia cupidatat laborum eu excepteur aliquip.",
     "author": "Jasmine Cameron",
     "year": 2014,
     "movement": "minimalism",
@@ -744,7 +744,7 @@
   {
     "id": 53,
     "name": "Sit Eu",
-    "desription": "Aute qui voluptate cupidatat amet esse eu ea nostrud est commodo magna dolor esse commodo.",
+    "description": "Aute qui voluptate cupidatat amet esse eu ea nostrud est commodo magna dolor esse commodo.",
     "author": "Harding Mathis",
     "year": 2010,
     "movement": "post-modernism",
@@ -758,7 +758,7 @@
   {
     "id": 54,
     "name": "Consectetur Ad Ipsum",
-    "desription": "Voluptate laborum occaecat culpa quis.",
+    "description": "Voluptate laborum occaecat culpa quis.",
     "author": "Ruiz Carlson",
     "year": 2014,
     "movement": "minimalism",
@@ -772,7 +772,7 @@
   {
     "id": 55,
     "name": "Eu",
-    "desription": "Laborum tempor qui nulla dolor aliqua mollit.",
+    "description": "Laborum tempor qui nulla dolor aliqua mollit.",
     "author": "Marcella Espinoza",
     "year": 2020,
     "movement": "modernism",
@@ -786,7 +786,7 @@
   {
     "id": 56,
     "name": "Est Ea In",
-    "desription": "Proident proident sunt ex occaecat qui nostrud occaecat tempor eiusmod velit ut amet quis laborum.",
+    "description": "Proident proident sunt ex occaecat qui nostrud occaecat tempor eiusmod velit ut amet quis laborum.",
     "author": "Stacy Mendez",
     "year": 1999,
     "movement": "minimalism",
@@ -800,7 +800,7 @@
   {
     "id": 57,
     "name": "Commodo Ea Aute",
-    "desription": "Sunt non culpa occaecat sint sint deserunt sit eiusmod.",
+    "description": "Sunt non culpa occaecat sint sint deserunt sit eiusmod.",
     "author": "Helga Key",
     "year": 2019,
     "movement": "minimalism",
@@ -814,7 +814,7 @@
   {
     "id": 58,
     "name": "Ipsum Aliquip",
-    "desription": "Tempor non duis id velit tempor laborum reprehenderit laborum culpa.",
+    "description": "Tempor non duis id velit tempor laborum reprehenderit laborum culpa.",
     "author": "Casandra Carter",
     "year": 2004,
     "movement": "modernism",
@@ -828,7 +828,7 @@
   {
     "id": 59,
     "name": "Enim Officia Elit",
-    "desription": "Deserunt quis exercitation qui ipsum esse occaecat dolor pariatur cillum duis eu.",
+    "description": "Deserunt quis exercitation qui ipsum esse occaecat dolor pariatur cillum duis eu.",
     "author": "Moran Dyer",
     "year": 2018,
     "movement": "realism",
@@ -842,7 +842,7 @@
   {
     "id": 60,
     "name": "Reprehenderit Officia Consectetur",
-    "desription": "Reprehenderit irure laboris excepteur adipisicing.",
+    "description": "Reprehenderit irure laboris excepteur adipisicing.",
     "author": "Cortez Singleton",
     "year": 1999,
     "movement": "ancientism",
@@ -856,7 +856,7 @@
   {
     "id": 61,
     "name": "Aliquip Nisi",
-    "desription": "Do voluptate nisi nostrud eu.",
+    "description": "Do voluptate nisi nostrud eu.",
     "author": "Lindsay Mcneil",
     "year": 2016,
     "movement": "post-modernism",
@@ -870,7 +870,7 @@
   {
     "id": 62,
     "name": "Ex Aliqua",
-    "desription": "Dolor labore eu mollit non culpa nulla duis nostrud est consectetur esse magna.",
+    "description": "Dolor labore eu mollit non culpa nulla duis nostrud est consectetur esse magna.",
     "author": "Cunningham Kramer",
     "year": 2019,
     "movement": "realism",
@@ -884,7 +884,7 @@
   {
     "id": 63,
     "name": "Do Cupidatat Commodo",
-    "desription": "Cillum magna ea reprehenderit pariatur aliqua et dolore eiusmod ad commodo aute cillum dolor.",
+    "description": "Cillum magna ea reprehenderit pariatur aliqua et dolore eiusmod ad commodo aute cillum dolor.",
     "author": "Trina Kaufman",
     "year": 1996,
     "movement": "ancientism",
@@ -898,7 +898,7 @@
   {
     "id": 64,
     "name": "Est Voluptate",
-    "desription": "In eiusmod tempor aliquip elit.",
+    "description": "In eiusmod tempor aliquip elit.",
     "author": "Irma Brennan",
     "year": 2006,
     "movement": "ancientism",
@@ -912,7 +912,7 @@
   {
     "id": 65,
     "name": "Sint Dolor Ea",
-    "desription": "Tempor labore occaecat ea qui.",
+    "description": "Tempor labore occaecat ea qui.",
     "author": "Maureen Schroeder",
     "year": 2021,
     "movement": "realism",
@@ -926,7 +926,7 @@
   {
     "id": 66,
     "name": "Irure Et Sit",
-    "desription": "Consectetur non et amet cupidatat do mollit nulla deserunt laborum Lorem.",
+    "description": "Consectetur non et amet cupidatat do mollit nulla deserunt laborum Lorem.",
     "author": "Shelton Coleman",
     "year": 2008,
     "movement": "ancientism",
@@ -940,7 +940,7 @@
   {
     "id": 67,
     "name": "Laborum",
-    "desription": "Duis fugiat id magna adipisicing ad pariatur commodo excepteur nisi nulla.",
+    "description": "Duis fugiat id magna adipisicing ad pariatur commodo excepteur nisi nulla.",
     "author": "Candace Randolph",
     "year": 2007,
     "movement": "pre-modernism",
@@ -954,7 +954,7 @@
   {
     "id": 68,
     "name": "Ipsum",
-    "desription": "Cillum nulla veniam laborum dolore.",
+    "description": "Cillum nulla veniam laborum dolore.",
     "author": "Hodges Oconnor",
     "year": 2015,
     "movement": "modernism",
@@ -968,7 +968,7 @@
   {
     "id": 69,
     "name": "Adipisicing",
-    "desription": "Incididunt adipisicing consequat dolore non aliqua.",
+    "description": "Incididunt adipisicing consequat dolore non aliqua.",
     "author": "Garner Roman",
     "year": 2004,
     "movement": "minimalism",
@@ -982,7 +982,7 @@
   {
     "id": 70,
     "name": "Anim",
-    "desription": "Aliqua commodo proident exercitation magna do minim proident quis eu.",
+    "description": "Aliqua commodo proident exercitation magna do minim proident quis eu.",
     "author": "Bradley Hyde",
     "year": 1999,
     "movement": "post-modernism",
@@ -996,7 +996,7 @@
   {
     "id": 71,
     "name": "Et Dolor",
-    "desription": "Exercitation et pariatur pariatur fugiat velit mollit in cillum.",
+    "description": "Exercitation et pariatur pariatur fugiat velit mollit in cillum.",
     "author": "Kathie Wong",
     "year": 2013,
     "movement": "minimalism",
@@ -1010,7 +1010,7 @@
   {
     "id": 72,
     "name": "Sit Adipisicing Qui",
-    "desription": "Dolore sit duis do et minim eiusmod occaecat ea sint dolor.",
+    "description": "Dolore sit duis do et minim eiusmod occaecat ea sint dolor.",
     "author": "Lauri Barron",
     "year": 2017,
     "movement": "ancientism",
@@ -1024,7 +1024,7 @@
   {
     "id": 73,
     "name": "Aliquip",
-    "desription": "Sit aliquip in commodo Lorem adipisicing ea cupidatat amet minim.",
+    "description": "Sit aliquip in commodo Lorem adipisicing ea cupidatat amet minim.",
     "author": "Roberts Hampton",
     "year": 1997,
     "movement": "realism",
@@ -1038,7 +1038,7 @@
   {
     "id": 74,
     "name": "Proident",
-    "desription": "Consectetur sunt eu anim eu magna consequat ad adipisicing laboris mollit ullamco dolor.",
+    "description": "Consectetur sunt eu anim eu magna consequat ad adipisicing laboris mollit ullamco dolor.",
     "author": "Hendricks Sherman",
     "year": 2011,
     "movement": "modernism",
@@ -1052,7 +1052,7 @@
   {
     "id": 75,
     "name": "Consectetur",
-    "desription": "Ex aliqua tempor sunt cupidatat eu et mollit cupidatat magna quis voluptate.",
+    "description": "Ex aliqua tempor sunt cupidatat eu et mollit cupidatat magna quis voluptate.",
     "author": "Brandi Simmons",
     "year": 2011,
     "movement": "ancientism",
@@ -1066,7 +1066,7 @@
   {
     "id": 76,
     "name": "Tempor Ullamco Id",
-    "desription": "Commodo nostrud eu sunt non id consectetur ad dolor aliqua velit ipsum.",
+    "description": "Commodo nostrud eu sunt non id consectetur ad dolor aliqua velit ipsum.",
     "author": "Moon Stevens",
     "year": 2021,
     "movement": "realism",
@@ -1080,7 +1080,7 @@
   {
     "id": 77,
     "name": "Labore Do",
-    "desription": "Enim qui aute minim laboris et mollit et ex.",
+    "description": "Enim qui aute minim laboris et mollit et ex.",
     "author": "Rosanne Mays",
     "year": 2014,
     "movement": "post-modernism",
@@ -1094,7 +1094,7 @@
   {
     "id": 78,
     "name": "Incididunt Ut",
-    "desription": "Ea sint dolore duis nisi est excepteur.",
+    "description": "Ea sint dolore duis nisi est excepteur.",
     "author": "Lewis Kelly",
     "year": 1999,
     "movement": "post-modernism",
@@ -1108,7 +1108,7 @@
   {
     "id": 79,
     "name": "Ad",
-    "desription": "Est cillum ea dolor incididunt cupidatat qui et.",
+    "description": "Est cillum ea dolor incididunt cupidatat qui et.",
     "author": "Rosanna Lambert",
     "year": 2014,
     "movement": "modernism",

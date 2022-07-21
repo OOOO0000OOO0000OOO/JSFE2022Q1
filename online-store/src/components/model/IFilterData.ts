@@ -42,4 +42,4 @@ export default interface IFilterData {
   unique?: boolean;
 }
 
-export { Materials, Mediums, Movements };
+export { Materials, Mediums, Movements, IRangeFilter };

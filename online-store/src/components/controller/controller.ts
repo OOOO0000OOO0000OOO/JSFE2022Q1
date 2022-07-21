@@ -1,6 +1,6 @@
-import IFilterData, { Movements, Mediums, Materials } from '../model/IFilterData';
+import IFilterData, { Movements, Mediums, Materials, IRangeFilter } from '../model/IFilterData';
 import StoreDataModel from '../model/storeDataModel';
-import { SettingControl } from '../view/settings';
+import { RangeSettingControl, SettingControl } from '../view/settings';
 import View from '../view/view';
 
 interface IController {
@@ -24,28 +24,32 @@ class Controller implements IController {
         const target = <SettingControl['node']>e.target;
 
         if (target.id === 'name') state.name = target.value;
-        if (target.id === 'unique') state.unique = (<HTMLInputElement>target).checked;
-
-        if (target.id in Movements) {
+        else if (target.id === 'unique') state.unique = (<HTMLInputElement>target).checked;
+        else if (target.id in Movements) {
           if (!state.movement) state.movement = [];
           (<HTMLInputElement>target).checked
             ? state.movement.push(Movements[<keyof typeof Movements>target.id])
             : (state.movement = state.movement.filter((el) => el !== Movements[<keyof typeof Movements>target.id]));
-        }
-
-        if (target.id in Mediums) {
+        } else if (target.id in Mediums) {
           if (!state.medium) state.medium = [];
           console.log(state.medium?.map((el) => el !== Mediums[<keyof typeof Mediums>target.id]));
           (<HTMLInputElement>target).checked
             ? state.medium.push(Mediums[<keyof typeof Mediums>target.id])
             : (state.medium = state.medium.filter((el) => el !== Mediums[<keyof typeof Mediums>target.id]));
-        }
-
-        if (target.id in Materials) {
+        } else if (target.id in Materials) {
           if (!state.material) state.material = [];
           (<HTMLInputElement>target).checked
             ? state.material.push(Materials[<keyof typeof Materials>target.id])
             : (state.material = state.material.filter((el) => el !== Materials[<keyof typeof Materials>target.id]));
+        } else if (target.id.includes('year')) {
+          (<IRangeFilter>state.year)[<keyof IRangeFilter>target.id.replace('year', '')] = Number(target.value);
+          (<RangeSettingControl>setting).oninput();
+        } else if (target.id.includes('size')) {
+          (<IRangeFilter>state.size)[<keyof IRangeFilter>target.id.replace('size', '')] = Number(target.value);
+          (<RangeSettingControl>setting).oninput();
+        } else if (target.id.includes('price')) {
+          (<IRangeFilter>state.price)[<keyof IRangeFilter>target.id.replace('price', '')] = Number(target.value);
+          (<RangeSettingControl>setting).oninput();
         }
 
         this.filter(state);

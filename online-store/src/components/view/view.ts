@@ -7,7 +7,6 @@ class View extends Control {
   main: Control<HTMLElement>;
   settings: Settings;
   settingsNodes: SettingControl[];
-  // settingsNodes: (HTMLInputElement | HTMLSelectElement)[];
   public onUpdate!: (options: IFilterData) => void;
 
   constructor({ parentNode }: { parentNode: HTMLElement }) {

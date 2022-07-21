@@ -2,6 +2,7 @@ import Control from '../common/control';
 import IProduct from '../model/IProduct';
 import IFilterData from '../model/IFilterData';
 import { Materials, Mediums, Movements } from '../model/IFilterData';
+import './rangeSlider.css';
 
 class SettingControl extends Control<HTMLInputElement | HTMLSelectElement> {
   public label: HTMLLabelElement;
@@ -128,20 +129,31 @@ class RangeSlider extends Control {
     const sliderView = new Control({ parentNode: this.node }).node;
 
     const range = new Control({ parentNode: sliderView, className: 'range' });
+    range.node.style.left = '0%';
+    range.node.style.right = '0%';
 
     const progressLeft = new Control({ parentNode: sliderView, className: 'progress from' });
+    progressLeft.node.style.width = '70%';
     const progressRight = new Control({ parentNode: sliderView, className: `progress to` });
+    progressRight.node.style.width = '70%';
 
     const thumbLeft = new Control({ parentNode: sliderView, className: 'thumb' });
+    thumbLeft.node.style.left = '0%';
     const thumbRight = new Control({ parentNode: sliderView, className: 'thumb' });
+    thumbRight.node.style.left = '100%';
 
     const signLeft = new Control({ parentNode: sliderView, className: 'sign' });
+    signLeft.node.style.left = '0%';
     const signRight = new Control({ parentNode: sliderView, className: 'sign' });
+    signRight.node.style.left = '100%';
 
     from.oninput = () => {
       from.node.value = Math.min(Number(from.node.value), Number(to.node.value)).toString();
 
-      const value = (Number(from.node.value) / parseInt((from.node as HTMLInputElement).max)) * 100;
+      const value =
+        ((Number(from.node.value) - Number((from.node as HTMLInputElement).min)) /
+          (parseInt((from.node as HTMLInputElement).max) - parseInt((from.node as HTMLInputElement).min))) *
+        100;
       progressLeft.node.style.width = `${value}%`;
 
       range.node.style.left = `${value}%`;
@@ -154,7 +166,10 @@ class RangeSlider extends Control {
     to.oninput = () => {
       to.node.value = Math.max(Number(to.node.value), Number(from.node.value)).toString();
 
-      const value = (Number(to.node.value) / parseInt((to.node as HTMLInputElement).max)) * 100;
+      const value =
+        ((Number(to.node.value) - Number((to.node as HTMLInputElement).min)) /
+          (parseInt((to.node as HTMLInputElement).max) - parseInt((to.node as HTMLInputElement).min))) *
+        100;
       progressRight.node.style.width = `${100 - value}%`;
 
       range.node.style.right = `${100 - value}%`;
@@ -162,7 +177,6 @@ class RangeSlider extends Control {
       thumbRight.node.style.left = `${value}%`;
       signRight.node.style.left = `${value}%`;
       signRight.node.innerHTML = `<span>${to.node.value}</span>`;
-      console.log(value);
     };
 
     this.to = to;

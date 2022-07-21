@@ -7,6 +7,15 @@ interface IController {
   filter(options: IFilterData): void;
 }
 
+const defaults: IFilterData = {
+  movement: [],
+  medium: [],
+  material: [],
+  year: { from: 1996, to: 2022 },
+  size: { from: 30, to: 150 },
+  price: { from: 50, to: 100 },
+};
+
 class Controller implements IController {
   public model: StoreDataModel;
   public view: View;
@@ -17,6 +26,8 @@ class Controller implements IController {
 
     this.model.onUpdate = () => this.model.build().then(() => this.view.update(this.model.data, this.model.state));
     this.view.onUpdate = (options) => this.filter(options);
+
+    window.onload = () => this.reset(); //TODO: LS
 
     this.view.settingsNodes.forEach((setting) => {
       setting.node.oninput = (e) => {
@@ -51,7 +62,6 @@ class Controller implements IController {
           (<IRangeFilter>state.price)[<keyof IRangeFilter>target.id.replace('price', '')] = Number(target.value);
           (<RangeSettingControl>setting).oninput();
         }
-
         this.filter(state);
       };
     });
@@ -59,6 +69,11 @@ class Controller implements IController {
 
   filter(options: IFilterData): void {
     this.model.update(options);
+  }
+
+  reset(): void {
+    this.filter(defaults);
+    this.view.settingsNodes.forEach((setting) => setting.node.dispatchEvent(new Event('input')));
   }
 }
 

@@ -3,8 +3,9 @@ import IProduct from '../model/IProduct';
 import IFilterData from '../model/IFilterData';
 import { Materials, Mediums, Movements } from '../model/IFilterData';
 import './rangeSlider.css';
+import ISortOptions from '../model/ISortOptions';
 
-class SettingControl extends Control<HTMLInputElement | HTMLSelectElement> {
+class SettingControl extends Control<HTMLInputElement> {
   public label: HTMLLabelElement;
   constructor({
     parentNode,
@@ -37,7 +38,7 @@ class SettingControl extends Control<HTMLInputElement | HTMLSelectElement> {
 
     this.label = label;
 
-    if (type) (this.node as HTMLInputElement).type = type;
+    if (type) this.node.type = type;
   }
 }
 
@@ -54,7 +55,7 @@ class RangeSettingControl extends SettingControl {
     labelContent = 'from',
     value = (0).toString(),
     min = (0).toString(),
-    max = (0).toString(),
+    max = (100).toString(),
     step = (1).toString(),
   }: {
     parentNode: HTMLElement | null;
@@ -73,10 +74,10 @@ class RangeSettingControl extends SettingControl {
 
     this.labelContent = labelContent;
 
-    (this.node as HTMLInputElement).min = min;
-    (this.node as HTMLInputElement).max = max;
-    (this.node as HTMLInputElement).step = step;
-    (this.node as HTMLInputElement).value = value;
+    this.node.min = min;
+    this.node.max = max;
+    this.node.step = step;
+    this.node.value = value;
   }
 }
 
@@ -133,9 +134,7 @@ class RangeSlider extends Control {
     range.node.style.right = '0%';
 
     const progressLeft = new Control({ parentNode: sliderView, className: 'progress from' });
-    progressLeft.node.style.width = '70%';
     const progressRight = new Control({ parentNode: sliderView, className: `progress to` });
-    progressRight.node.style.width = '70%';
 
     const thumbLeft = new Control({ parentNode: sliderView, className: 'thumb' });
     thumbLeft.node.style.left = '0%';
@@ -184,6 +183,59 @@ class RangeSlider extends Control {
   }
 }
 
+class SelectSettingControl extends Control<HTMLSelectElement> {
+  public label: HTMLLabelElement;
+  constructor({
+    parentNode,
+    tagName = 'select',
+    className = 'setting',
+    content = '',
+    id = '',
+    labelContent = '',
+    options = {
+      default: '',
+      nameAsc: '',
+      yearAsc: '',
+      nameDesc: '',
+      yearDesc: '',
+      priceAsc: '',
+      priceDesc: '',
+    },
+  }: {
+    parentNode: HTMLElement | null;
+    tagName?: string;
+    className?: string;
+    content?: string;
+    id?: string;
+    labelContent?: string;
+    options: Record<keyof ISortOptions, string>;
+  }) {
+    super({ parentNode, tagName, className, content });
+
+    this.node.id = id;
+    this.node.name = id;
+
+    const label = document.createElement('label');
+
+    label.htmlFor = id;
+    label.className = `label ${className}`;
+    label.innerHTML = labelContent;
+
+    if (parentNode) parentNode.append(label);
+
+    this.label = label;
+
+    for (const option in options) {
+      const opt = new Control({
+        parentNode: this.node,
+        tagName: 'option',
+        content: options[<keyof ISortOptions>option],
+      });
+      (<HTMLOptionElement>opt.node).value = option;
+    }
+  }
+}
+
 class Settings extends Control {
   public name: SettingControl;
   public movements: SettingControl[];
@@ -193,9 +245,26 @@ class Settings extends Control {
   year: RangeSlider;
   size: RangeSlider;
   price: RangeSlider;
+  sorter: SelectSettingControl;
 
   constructor(node: HTMLElement) {
     super({ parentNode: node });
+
+    const sorter = new SelectSettingControl({
+      parentNode: node,
+      id: 'sort',
+      labelContent: 'Sort:',
+      options: {
+        default: 'Default',
+        nameAsc: 'Title (asc.)',
+        nameDesc: 'Title (desc.)',
+        yearAsc: 'Year (asc.)',
+        yearDesc: 'Year (desc.)',
+        priceAsc: 'Price (asc.)',
+        priceDesc: 'Price (desc.)',
+      },
+    });
+    this.sorter = sorter;
 
     const name = new SettingControl({
       parentNode: node,
@@ -206,6 +275,7 @@ class Settings extends Control {
     (<HTMLInputElement>name.node).placeholder = 'Search for artworks...';
     this.name = name;
 
+    new Control({ parentNode: node, tagName: 'h3', content: 'Year' });
     const yearSlider = new RangeSlider({
       parentNode: node,
       className: 'year slider',
@@ -213,28 +283,7 @@ class Settings extends Control {
       min: (1996).toString(),
       max: (2022).toString(),
     });
-
     this.year = yearSlider;
-
-    const sizeSlider = new RangeSlider({
-      parentNode: node,
-      className: 'size slider',
-      id: 'size',
-      min: (30).toString(),
-      max: (150).toString(),
-    });
-
-    this.size = sizeSlider;
-
-    const priceSlider = new RangeSlider({
-      parentNode: node,
-      className: 'price slider',
-      id: 'price',
-      min: (50).toString(),
-      max: (100).toString(),
-    });
-
-    this.price = priceSlider;
 
     this.movements = [];
     const movementsContainer = new Control({ parentNode: node });
@@ -275,6 +324,26 @@ class Settings extends Control {
       this.materials.push(materialsSetting);
     }
 
+    new Control({ parentNode: node, tagName: 'h3', content: 'Size' });
+    const sizeSlider = new RangeSlider({
+      parentNode: node,
+      className: 'size slider',
+      id: 'size',
+      min: (30).toString(),
+      max: (150).toString(),
+    });
+    this.size = sizeSlider;
+
+    new Control({ parentNode: node, tagName: 'h3', content: 'Price' });
+    const priceSlider = new RangeSlider({
+      parentNode: node,
+      className: 'price slider',
+      id: 'price',
+      min: (50).toString(),
+      max: (100).toString(),
+    });
+    this.price = priceSlider;
+
     const unique = new SettingControl({
       parentNode: node,
       className: 'setting search',
@@ -298,6 +367,7 @@ class Settings extends Control {
       this.size.to,
       this.price.from,
       this.price.to,
+      this.sorter,
     ];
   }
 
@@ -320,4 +390,4 @@ class Settings extends Control {
 }
 
 export default Settings;
-export { RangeSettingControl, SettingControl };
+export { SelectSettingControl, RangeSettingControl, SettingControl };

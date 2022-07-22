@@ -1,6 +1,7 @@
 import IFilterData, { Movements, Mediums, Materials, IRangeFilter } from '../model/IFilterData';
+import ISortOptions, { Sorting } from '../model/ISortOptions';
 import StoreDataModel from '../model/storeDataModel';
-import { RangeSettingControl, SettingControl } from '../view/settings';
+import { RangeSettingControl, SelectSettingControl, SettingControl } from '../view/settings';
 import View from '../view/view';
 
 interface IController {
@@ -24,17 +25,17 @@ class Controller implements IController {
     this.model = model;
     this.view = view;
 
-    this.model.onUpdate = () => this.model.build().then(() => this.view.update(this.model.data, this.model.state));
-    this.view.onUpdate = (options) => this.filter(options);
+    this.model.onUpdate = () =>
+      this.model.build().then(() => this.view.update(this.model.data, this.model.state.filters));
 
-    window.onload = () => this.reset(); //TODO: LS
+    window.onload = () => this.reset();
 
     this.view.settingsNodes.forEach((setting) => {
       setting.node.oninput = (e) => {
-        const state = this.model.state;
-        const target = <SettingControl['node']>e.target;
-
-        if (target.id === 'name') state.name = target.value;
+        const state = this.model.state.filters;
+        const target = <(SettingControl | SelectSettingControl)['node']>e.target;
+        if (target.id === 'sort') this.sort((<HTMLSelectElement>target).value as keyof ISortOptions);
+        else if (target.id === 'name') state.name = target.value;
         else if (target.id === 'unique') state.unique = (<HTMLInputElement>target).checked;
         else if (target.id in Movements) {
           if (!state.movement) state.movement = [];
@@ -67,8 +68,12 @@ class Controller implements IController {
     });
   }
 
+  sort(option: keyof ISortOptions) {
+    this.model.update({ sorting: Sorting[option] });
+  }
+
   filter(options: IFilterData): void {
-    this.model.update(options);
+    this.model.update({ filters: options });
   }
 
   reset(): void {

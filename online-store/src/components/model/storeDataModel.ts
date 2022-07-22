@@ -1,22 +1,28 @@
 import IFilterData from './IFilterData';
 import IProduct from './IProduct';
+import ISortOptions, { Sorting } from './ISortOptions';
 
 class StoreDataModel {
-  public state: IFilterData;
+  public state: { filters: IFilterData; sorting: ISortOptions[keyof ISortOptions] };
   private _data: IProduct[];
   public onUpdate!: () => void;
 
   constructor() {
     this._data = [];
-    this.state = {};
+    this.state = {
+      filters: {},
+      sorting: Sorting.default,
+    };
   }
 
   public get data() {
-    return this._data;
+    const _data = this._data;
+    return _data.sort(this.state.sorting);
   }
 
-  update(options: IFilterData) {
-    this.state = options;
+  update({ filters, sorting }: { filters?: IFilterData; sorting?: ISortOptions[keyof ISortOptions] }): void {
+    if (filters) this.state.filters = filters;
+    if (sorting) this.state.sorting = sorting;
     this.onUpdate();
   }
 

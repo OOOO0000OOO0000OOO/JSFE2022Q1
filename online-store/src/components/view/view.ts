@@ -1,13 +1,14 @@
 import Control from '../common/control';
 import IFilterData from '../model/IFilterData';
 import IProduct from '../model/IProduct';
-import Settings, { SettingControl } from './settings';
+import Settings, { SelectSettingControl, SettingControl } from './settings';
+import ISortOptions from '../model/ISortOptions';
 
 class View extends Control {
   main: Control<HTMLElement>;
   settings: Settings;
-  settingsNodes: SettingControl[];
-  public onUpdate!: (options: IFilterData) => void;
+  settingsNodes: (SettingControl | SelectSettingControl)[];
+  public onUpdate!: (options: IFilterData, sorting?: ISortOptions[keyof ISortOptions]) => void;
 
   constructor({ parentNode }: { parentNode: HTMLElement }) {
     super({ parentNode });
@@ -27,7 +28,9 @@ class View extends Control {
     data.forEach((product) => {
       const productCard = new Control({ parentNode: this.main.node, className: 'artwork' });
       productCard.node.innerHTML = `<h2 class="product-author">${product.author}</h2>
-        <h3 class="product-title">${product.name}, <span class="product-year">${product.year}</span></h3>
+        <h3 class="product-title"><span class="product.name">${product.name}</span>, <span class="product-year">${
+        product.year
+      }</span></h3>
         <p class="product-description">${product.description}</p>
         <p class="product-type"><span class="product-medium">${product.medium}</span>, <span class="product-material">${
         product.material

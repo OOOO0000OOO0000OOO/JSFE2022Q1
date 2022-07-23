@@ -1,29 +1,29 @@
 enum Movements {
-  'minimalism',
-  'realism',
-  'post-modernism',
-  'pre-modernism',
-  'modernism',
-  'ancientism',
+  'minimalism' = 'minimalism',
+  'realism' = 'realism',
+  'post-modernism' = 'post-modernism',
+  'pre-modernism' = 'pre-modernism',
+  'modernism' = 'modernism',
+  'ancientism' = 'ancientism',
 }
 
 enum Mediums {
-  'acrylic',
-  'charcoal',
-  'ink',
-  'oil',
-  'pastel',
-  'spray paint',
-  'watercolor',
+  'acrylic' = 'acrylic',
+  'charcoal' = 'charcoal',
+  'ink' = 'ink',
+  'oil' = 'oil',
+  'pastel' = 'pastel',
+  'spray paint' = 'spray paint',
+  'watercolor' = 'watercolor',
 }
 
 enum Materials {
-  'canvas',
-  'cardboard',
-  'other',
-  'paper',
-  'soft',
-  'wood',
+  'canvas' = 'canvas',
+  'cardboard' = 'cardboard',
+  'other' = 'other',
+  'paper' = 'paper',
+  'soft' = 'soft',
+  'wood' = 'wood',
 }
 
 interface IRangeFilter {
@@ -31,15 +31,16 @@ interface IRangeFilter {
   to: number;
 }
 
-export default interface IFilterData {
-  name?: string;
-  year?: IRangeFilter;
-  size?: IRangeFilter;
-  price?: IRangeFilter;
-  movement?: Movements[];
-  medium?: Mediums[];
-  material?: Materials[];
-  unique?: boolean;
+interface IFilterData {
+  name: string;
+  year: IRangeFilter;
+  size: IRangeFilter;
+  price: IRangeFilter;
+  movement: Movements[];
+  medium: Mediums[];
+  material: Materials[];
+  unique: boolean;
 }
 
 export { Materials, Mediums, Movements, IRangeFilter };
+export default IFilterData;

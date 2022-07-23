@@ -1,29 +1,33 @@
 import Control from '../common/control';
-import IFilterData from '../model/IFilterData';
 import IProduct from '../model/IProduct';
-import Settings, { SelectSettingControl, SettingControl } from './settings';
+import IFilterData from '../model/IFilterData';
 import ISortOptions from '../model/ISortOptions';
+import Settings from './settingsView';
+import InputSetting from './inputSetting';
+import SelectInputSetting from './selectSetting';
 
 class View extends Control {
-  main: Control<HTMLElement>;
-  settings: Settings;
-  settingsNodes: (SettingControl | SelectSettingControl)[];
+  public main: Control<HTMLElement>;
+  public settings: Settings;
+  public inputs: InputSetting[];
+  public selects: SelectInputSetting[];
   public onUpdate!: (options: IFilterData, sorting?: ISortOptions[keyof ISortOptions]) => void;
 
   constructor({ parentNode }: { parentNode: HTMLElement }) {
     super({ parentNode });
-    this.settings = new Settings(new Control({ parentNode: this.node, className: 'settings' }).node);
-    this.main = new Control({ parentNode: this.node, className: 'artworks' });
 
-    this.settingsNodes = this.settings.getNodes();
+    this.settings = new Settings(new Control({ parentNode: this.node, className: 'settings' }).node);
+    this.selects = this.settings.selects;
+    this.inputs = this.settings.inputs;
+
+    this.main = new Control({ parentNode: this.node, className: 'artworks' });
   }
 
-  update(data: IProduct[], options: IFilterData) {
-    const selection = this.settings.setOptions(data, options);
+  public update(selection: IProduct[]): void {
     this.render(selection);
   }
 
-  render(data: IProduct[]) {
+  public render(data: IProduct[]): void {
     this.main.node.innerHTML = ``;
     data.forEach((product) => {
       const productCard = new Control({ parentNode: this.main.node, className: 'artwork' });

@@ -1,5 +1,6 @@
 import Control from '../common/control';
 import IFilterData, { IRangeFilter } from '../model/IFilterData';
+import ISettings from '../model/ISettings';
 import InputSetting from './inputSetting';
 import './rangeSlider.css';
 
@@ -14,11 +15,11 @@ class RangeInputSetting extends InputSetting {
     id = '',
     type = 'range',
     labelContent = 'from',
-    value = '0',
-    min = '0',
-    max = '100',
+    min = '',
+    max = '',
     step = '1',
     onUpdate,
+    reset,
   }: {
     parentNode: HTMLElement | null;
     tagName?: string;
@@ -27,19 +28,18 @@ class RangeInputSetting extends InputSetting {
     id?: string;
     type?: string;
     labelContent?: 'from' | 'to';
-    value: string;
     min?: string;
     max?: string;
     step?: string;
     onUpdate: (filters: IFilterData) => Promise<IFilterData>;
+    reset: (settings: ISettings) => void;
   }) {
-    super({ parentNode, tagName, className, content, id, type, labelContent, onUpdate });
+    super({ parentNode, tagName, className, content, id, type, labelContent, onUpdate, reset });
 
     this.labelContent = labelContent;
     this.node.min = min;
     this.node.max = max;
     this.node.step = step;
-    this.node.value = value;
   }
 }
 
@@ -52,8 +52,8 @@ class RangeSlider extends Control {
     className = 'slider',
     content = '',
     id,
-    min = '0',
-    max = '100',
+    min,
+    max,
   }: {
     parentNode: HTMLElement | null;
     id: keyof IFilterData;
@@ -72,7 +72,6 @@ class RangeSlider extends Control {
       id: `${id}from`,
       type: 'range',
       labelContent: 'from',
-      value: min,
       min: min,
       max: max,
       step: '1',
@@ -80,6 +79,9 @@ class RangeSlider extends Control {
         (<IRangeFilter>filters[id])['from'] = Number(from.node.value);
         from.oninput();
         return filters;
+      },
+      reset: (settings: ISettings): void => {
+        from.node.value = `${(<IRangeFilter>settings.filters[id])['from']}`;
       },
     });
 
@@ -89,7 +91,6 @@ class RangeSlider extends Control {
       id: `${id}to`,
       type: 'range',
       labelContent: 'to',
-      value: max,
       min: min,
       max: max,
       step: '1',
@@ -97,6 +98,11 @@ class RangeSlider extends Control {
         (<IRangeFilter>filters[id])['to'] = Number(to.node.value);
         to.oninput();
         return filters;
+      },
+      reset: (settings: ISettings): void => {
+        to.node.value = `${(<IRangeFilter>settings.filters[id])['to']}`;
+        from.oninput();
+        to.oninput();
       },
     });
 
@@ -112,7 +118,7 @@ class RangeSlider extends Control {
     from.oninput = () => {
       from.node.value = Math.min(Number(from.node.value), Number(to.node.value)).toString();
       const value =
-        ((Number(from.node.value) - Number(from.node.min)) / (parseInt(from.node.max) - parseInt(from.node.min))) * 100;
+        ((Number(from.node.value) - Number(from.node.min)) / (Number(from.node.max) - Number(from.node.min))) * 100;
       progressLeft.node.style.width = `${value}%`;
       range.node.style.left = `${value}%`;
       thumbLeft.node.style.left = `${value}%`;
@@ -121,9 +127,8 @@ class RangeSlider extends Control {
     };
 
     to.oninput = () => {
-      to.node.value = Math.max(Number(to.node.value), Number(from.node.value)).toString();
-      const value =
-        ((Number(to.node.value) - Number(to.node.min)) / (parseInt(to.node.max) - parseInt(to.node.min))) * 100;
+      to.node.value = Math.max(Number(from.node.value), Number(to.node.value)).toString();
+      const value = ((Number(to.node.value) - Number(to.node.min)) / (Number(to.node.max) - Number(to.node.min))) * 100;
       progressRight.node.style.width = `${100 - value}%`;
       range.node.style.right = `${100 - value}%`;
       thumbRight.node.style.left = `${value}%`;
@@ -133,6 +138,9 @@ class RangeSlider extends Control {
 
     this.to = to;
     this.from = from;
+
+    this.from.oninput();
+    this.to.oninput();
   }
 }
 

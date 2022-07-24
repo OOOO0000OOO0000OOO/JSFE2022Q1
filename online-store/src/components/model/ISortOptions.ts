@@ -20,5 +20,15 @@ const Sorting: ISortOptions = {
   priceDesc: (a: IProduct, b: IProduct) => b.price - a.price,
 };
 
+export enum sortValues {
+  default = 'Default',
+  nameAsc = 'Title (asc.)',
+  nameDesc = 'Title (desc.)',
+  yearAsc = 'Year (asc.)',
+  yearDesc = 'Year (desc.)',
+  priceAsc = 'Price (asc.)',
+  priceDesc = 'Price (desc.)',
+}
+
 export default ISortOptions;
 export { Sorting };

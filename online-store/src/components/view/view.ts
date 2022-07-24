@@ -5,30 +5,41 @@ import ISortOptions from '../model/ISortOptions';
 import Settings from './settingsView';
 import InputSetting from './inputSetting';
 import SelectInputSetting from './selectSetting';
+import ISettings from '../model/ISettings';
 
 class View extends Control {
   public main: Control<HTMLElement>;
+  public panel: Control;
   public settings: Settings;
   public inputs: InputSetting[];
-  public selects: SelectInputSetting[];
+  public selector: SelectInputSetting;
+  public resetButton: HTMLButtonElement;
+  public filtersResetButton: HTMLButtonElement;
   public onUpdate!: (options: IFilterData, sorting?: ISortOptions[keyof ISortOptions]) => void;
 
-  constructor({ parentNode }: { parentNode: HTMLElement }) {
-    super({ parentNode });
+  constructor({ parentNode, className }: { parentNode: HTMLElement; className: string }) {
+    super({ parentNode, className });
 
-    this.settings = new Settings(new Control({ parentNode: this.node, className: 'settings' }).node);
-    this.selects = this.settings.selects;
+    this.panel = new Control({ parentNode: this.node, className: 'settings' });
+    this.settings = new Settings(this.panel.node);
+    this.selector = this.settings.sorter;
     this.inputs = this.settings.inputs;
+
+    this.filtersResetButton = this.settings.filtersReset.node;
+    this.resetButton = this.settings.reset.node;
 
     this.main = new Control({ parentNode: this.node, className: 'artworks' });
   }
 
-  public update(selection: IProduct[]): void {
-    this.render(selection);
+  public reset(settings: ISettings) {
+    this.settings.onreset(settings);
   }
 
   public render(data: IProduct[]): void {
     this.main.node.innerHTML = ``;
+
+    if (!data.length) new Control({ parentNode: this.main.node, className: 'no-matches', content: 'No items found' });
+
     data.forEach((product) => {
       const productCard = new Control({ parentNode: this.main.node, className: 'artwork' });
       productCard.node.innerHTML = `<h2 class="product-author">${product.author}</h2>

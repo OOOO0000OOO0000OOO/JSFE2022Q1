@@ -1,9 +1,11 @@
 import Control from '../common/control';
+import ISettings from '../model/ISettings';
 import ISortOptions from '../model/ISortOptions';
 
 class SelectSetting extends Control<HTMLSelectElement> {
   public label: HTMLLabelElement;
   public onUpdate: () => Promise<keyof ISortOptions>;
+  public reset: (settings: ISettings) => void;
   constructor({
     parentNode,
     tagName = 'select',
@@ -11,16 +13,9 @@ class SelectSetting extends Control<HTMLSelectElement> {
     content = '',
     id = '',
     labelContent = '',
-    options = {
-      default: '',
-      nameAsc: '',
-      yearAsc: '',
-      nameDesc: '',
-      yearDesc: '',
-      priceAsc: '',
-      priceDesc: '',
-    },
+    options,
     onUpdate,
+    reset,
   }: {
     parentNode: HTMLElement | null;
     tagName?: string;
@@ -30,6 +25,7 @@ class SelectSetting extends Control<HTMLSelectElement> {
     labelContent?: string;
     options: Record<keyof ISortOptions, string>;
     onUpdate: () => Promise<keyof ISortOptions>;
+    reset: (settings: ISettings) => void;
   }) {
     super({ parentNode, tagName, className, content });
     if (id) this.node.id = id;
@@ -55,6 +51,7 @@ class SelectSetting extends Control<HTMLSelectElement> {
     }
 
     this.onUpdate = onUpdate;
+    this.reset = reset;
   }
 }
 

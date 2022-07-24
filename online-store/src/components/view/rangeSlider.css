@@ -35,7 +35,6 @@
   height: 3px;
   border-radius: 10px;
   background-color: #ccc;
-  margin: 0 7px;
 }
 
 .slider div .progress.from {
@@ -72,7 +71,7 @@
 }
 
 .slider div .sign {
-  opacity: 0;
+  opacity: 1;
   top: -40px;
   position: absolute;
   width: 28px;

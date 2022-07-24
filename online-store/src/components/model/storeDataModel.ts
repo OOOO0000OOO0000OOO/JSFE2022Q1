@@ -1,39 +1,26 @@
 import IFilterData, { Materials, Mediums, Movements } from './IFilterData';
 import IProduct from './IProduct';
-import ISortOptions, { Sorting } from './ISortOptions';
-
-export const defaults: IFilterData = {
-  name: '',
-  movement: [],
-  medium: [],
-  material: [],
-  year: { from: 1996, to: 2022 },
-  size: { from: 30, to: 150 },
-  price: { from: 50, to: 100 },
-  unique: false,
-};
+import ISettings, { defaultSettings } from './ISettings';
+import { Sorting } from './ISortOptions';
 
 class StoreDataModel {
-  public state: { filters: IFilterData; sorting: ISortOptions[keyof ISortOptions] };
+  public state: ISettings;
   private _data: IProduct[];
   public onUpdate!: () => void;
 
   constructor() {
     this._data = [];
-    this.state = {
-      filters: defaults,
-      sorting: Sorting.default,
-    };
+    this.state = JSON.parse(JSON.stringify(defaultSettings));
   }
 
   public get data(): IProduct[] {
     const _data = this._data;
-    return _data.sort(this.state.sorting).filter((product) => this.filter(product));
+    return _data.sort(Sorting[this.state.sorting]).filter((product) => this.filter(product));
   }
 
-  public update({ filters, sorting }: { filters?: IFilterData; sorting?: ISortOptions[keyof ISortOptions] }): void {
-    if (filters) this.state.filters = filters;
-    if (sorting) this.state.sorting = sorting;
+  public update({ filters, sorting }: { filters?: ISettings['filters']; sorting?: ISettings['sorting'] }): void {
+    if (filters) this.state = { ...this.state, filters };
+    if (sorting) this.state = { ...this.state, sorting };
     this.onUpdate();
   }
 

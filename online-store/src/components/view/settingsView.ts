@@ -3,7 +3,8 @@ import IFilterData, { Materials, Mediums, Movements } from '../model/IFilterData
 import InputSetting from './inputSetting';
 import SelectSetting from './selectSetting';
 import RangeSlider from './rangeSlider';
-import ISortOptions from '../model/ISortOptions';
+import ISortOptions, { sortValues } from '../model/ISortOptions';
+import ISettings from '../model/ISettings';
 
 class Settings extends Control {
   public name: InputSetting;
@@ -15,30 +16,24 @@ class Settings extends Control {
   public size: RangeSlider;
   public price: RangeSlider;
   public sorter: SelectSetting;
+  public reset: Control<HTMLButtonElement>;
+  filtersReset: Control<HTMLButtonElement>;
 
   constructor(node: HTMLElement) {
     super({ parentNode: node });
-
-    const sorter = new SelectSetting({
+    const sorter: SelectSetting = new SelectSetting({
       parentNode: node,
       id: 'sort',
       labelContent: 'Sort:',
-      options: {
-        default: 'Default',
-        nameAsc: 'Title (asc.)',
-        nameDesc: 'Title (desc.)',
-        yearAsc: 'Year (asc.)',
-        yearDesc: 'Year (desc.)',
-        priceAsc: 'Price (asc.)',
-        priceDesc: 'Price (desc.)',
-      },
+      options: sortValues,
       onUpdate: async (): Promise<keyof ISortOptions> => {
         return sorter.node.value as keyof ISortOptions;
       },
+      reset: (values: ISettings) => (sorter.node.value = values.sorting),
     });
     this.sorter = sorter;
 
-    const name = new InputSetting({
+    const name: InputSetting = new InputSetting({
       parentNode: node,
       className: 'setting search',
       id: 'name',
@@ -47,6 +42,7 @@ class Settings extends Control {
         filters.name = name.node.value;
         return filters;
       },
+      reset: () => (name.node.value = ''),
     });
     (<HTMLInputElement>name.node).placeholder = 'Search for artworks...';
     this.name = name;
@@ -76,6 +72,9 @@ class Settings extends Control {
             : (filters.movement = filters.movement.filter((el) => el !== <Movements>movementsSetting.node.id));
           return filters;
         },
+        reset: (values: ISettings) => {
+          movementsSetting.node.checked = values.filters.movement.includes(<Movements>movement);
+        },
       });
       this.movements.push(movementsSetting);
     }
@@ -95,6 +94,9 @@ class Settings extends Control {
             : (filters.medium = filters.medium.filter((el) => el !== <Mediums>mediumsSetting.node.id));
           return filters;
         },
+        reset: (values: ISettings) => {
+          mediumsSetting.node.checked = values.filters.medium.includes(<Mediums>medium);
+        },
       });
       this.mediums.push(mediumsSetting);
     }
@@ -113,6 +115,9 @@ class Settings extends Control {
             ? filters.material.push(<Materials>materialsSetting.node.id)
             : (filters.material = filters.material.filter((el) => el !== <Materials>materialsSetting.node.id));
           return filters;
+        },
+        reset: (values: ISettings) => {
+          materialsSetting.node.checked = values.filters.material.includes(<Materials>material);
         },
       });
       this.materials.push(materialsSetting);
@@ -143,13 +148,30 @@ class Settings extends Control {
       className: 'setting search',
       id: 'unique',
       type: 'checkbox',
-      labelContent: 'uniue',
+      labelContent: 'unique',
       onUpdate: async (filters: IFilterData) => {
         filters.unique = unique.node.checked;
         return filters;
       },
+      reset: (values: ISettings) => {
+        unique.node.checked = values.filters.unique;
+      },
     });
     this.unique = unique;
+
+    this.filtersReset = new Control<HTMLButtonElement>({
+      parentNode: node,
+      tagName: 'button',
+      className: 'setting reset',
+      content: 'Reset filters',
+    });
+
+    this.reset = new Control<HTMLButtonElement>({
+      parentNode: node,
+      tagName: 'button',
+      className: 'setting reset',
+      content: 'Reset settings',
+    });
   }
 
   public get inputs(): InputSetting[] {
@@ -170,6 +192,10 @@ class Settings extends Control {
 
   public get selects(): SelectSetting[] {
     return [this.sorter];
+  }
+
+  public onreset(values: ISettings) {
+    [...this.selects, ...this.inputs].forEach((setting) => setting.reset(values));
   }
 }
 

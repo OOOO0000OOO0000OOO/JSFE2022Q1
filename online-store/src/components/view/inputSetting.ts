@@ -1,9 +1,11 @@
 import Control from '../common/control';
 import IFilterData from '../model/IFilterData';
+import ISettings from '../model/ISettings';
 
 class InputSetting extends Control<HTMLInputElement> {
   public label: HTMLLabelElement;
   public onUpdate: (filters: IFilterData) => Promise<IFilterData>;
+  public reset: (settings: ISettings) => void;
 
   constructor({
     parentNode,
@@ -14,6 +16,7 @@ class InputSetting extends Control<HTMLInputElement> {
     type = '',
     labelContent = '',
     onUpdate,
+    reset,
   }: {
     parentNode: HTMLElement | null;
     tagName?: string;
@@ -23,6 +26,7 @@ class InputSetting extends Control<HTMLInputElement> {
     type?: string;
     labelContent?: string;
     onUpdate: (filters: IFilterData) => Promise<IFilterData>;
+    reset: (settings: ISettings) => void;
   }) {
     super({ parentNode, tagName, className, content });
     if (id) this.node.id = id;
@@ -36,6 +40,7 @@ class InputSetting extends Control<HTMLInputElement> {
     this.label = label;
 
     this.onUpdate = onUpdate;
+    this.reset = reset;
   }
 }
 

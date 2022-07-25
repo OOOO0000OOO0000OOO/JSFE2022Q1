@@ -14,7 +14,7 @@ class StoreDataModel {
   }
 
   public get data(): IProduct[] {
-    const _data = this._data;
+    const _data = [...this._data];
     return _data.sort(Sorting[this.state.sorting]).filter((product) => this.filter(product));
   }
 

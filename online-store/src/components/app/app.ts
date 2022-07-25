@@ -58,7 +58,7 @@ class Application extends Control {
   }
 
   set settings(data: ISettings) {
-    this._settings = { ...data, filters: { ...data.filters, name: '' } };
+    this._settings = data;
     this.model.state = this.settings;
     this.saveToStorage();
   }
@@ -69,7 +69,10 @@ class Application extends Control {
   }
 
   private saveToStorage() {
-    localStorage.setItem('settings', JSON.stringify(this.settings));
+    localStorage.setItem(
+      'settings',
+      JSON.stringify({ ...this.settings, filters: { ...this.settings.filters, name: '' } })
+    );
   }
 
   public sort(option: keyof ISortOptions): void {

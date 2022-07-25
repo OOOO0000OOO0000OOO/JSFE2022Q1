@@ -5,6 +5,7 @@ import SelectSetting from './selectSetting';
 import RangeSlider from './rangeSlider';
 import ISortOptions, { sortValues } from '../model/ISortOptions';
 import ISettings from '../model/ISettings';
+import './settingsView.css';
 
 class Settings extends Control {
   public name: InputSetting;
@@ -15,27 +16,27 @@ class Settings extends Control {
   public year: RangeSlider;
   public size: RangeSlider;
   public price: RangeSlider;
-  public sorter: SelectSetting;
+  public selector: SelectSetting;
   public reset: Control<HTMLButtonElement>;
-  filtersReset: Control<HTMLButtonElement>;
+  public filtersReset: Control<HTMLButtonElement>;
 
   constructor(node: HTMLElement) {
     super({ parentNode: node });
-    const sorter: SelectSetting = new SelectSetting({
-      parentNode: node,
+    const selector: SelectSetting = new SelectSetting({
+      parentNode: new Control({ parentNode: node, className: 'setting setting_select' }).node,
       id: 'sort',
       labelContent: 'Sort:',
       options: sortValues,
       onUpdate: async (): Promise<keyof ISortOptions> => {
-        return sorter.node.value as keyof ISortOptions;
+        return selector.node.value as keyof ISortOptions;
       },
-      reset: (values: ISettings) => (sorter.node.value = values.sorting),
+      reset: (values: ISettings) => (selector.node.value = values.sorting),
     });
-    this.sorter = sorter;
+    this.selector = selector;
 
     const name: InputSetting = new InputSetting({
-      parentNode: node,
-      className: 'setting search',
+      parentNode: new Control({ parentNode: node, className: 'setting setting_search' }).node,
+      className: 'setting_search__input',
       id: 'name',
       type: 'text',
       onUpdate: async (filters: IFilterData) => {
@@ -44,13 +45,20 @@ class Settings extends Control {
       },
       reset: () => (name.node.value = ''),
     });
-    (<HTMLInputElement>name.node).placeholder = 'Search for artworks...';
+    name.node.placeholder = 'Search for artworks...';
+    name.node.autocomplete = 'off';
     this.name = name;
 
-    new Control({ parentNode: node, tagName: 'h3', content: 'Year' });
+    const yearContainer = new Control({ parentNode: node, className: 'settings-category' }).node;
+    new Control({
+      parentNode: yearContainer,
+      tagName: 'h3',
+      className: 'settings-category__name',
+      content: 'Year <span class="settings-category__label">1996 — 2022</span>',
+    });
     const yearSlider = new RangeSlider({
-      parentNode: node,
-      className: 'year slider',
+      parentNode: yearContainer,
+      className: 'setting settings-category__setting slider',
       id: 'year',
       min: '1996',
       max: '2022',
@@ -58,11 +66,20 @@ class Settings extends Control {
     this.year = yearSlider;
 
     this.movements = [];
-    const movementsContainer = new Control({ parentNode: node });
+    const movementsContainer = new Control({ parentNode: node, className: 'settings-category' });
+    new Control({
+      parentNode: movementsContainer.node,
+      tagName: 'h3',
+      className: 'settings-category__name',
+      content: 'Movements',
+    });
     for (const movement in Movements) {
       const movementsSetting = new InputSetting({
-        parentNode: movementsContainer.node,
-        className: `setting ${movement}`,
+        parentNode: new Control({
+          parentNode: movementsContainer.node,
+          className: 'setting settings-category__setting',
+        }).node,
+        className: 'setting__checkbox',
         id: movement,
         type: 'checkbox',
         labelContent: movement,
@@ -80,11 +97,20 @@ class Settings extends Control {
     }
 
     this.mediums = [];
-    const mediumsContainer = new Control({ parentNode: node });
+    const mediumsContainer = new Control({ parentNode: node, className: 'settings-category' });
+    new Control({
+      parentNode: mediumsContainer.node,
+      tagName: 'h3',
+      className: 'settings-category__name',
+      content: 'Mediums',
+    });
     for (const medium in Mediums) {
       const mediumsSetting = new InputSetting({
-        parentNode: mediumsContainer.node,
-        className: `setting ${medium}`,
+        parentNode: new Control({
+          parentNode: mediumsContainer.node,
+          className: 'setting settings-category__setting',
+        }).node,
+        className: 'setting__checkbox',
         id: medium,
         type: 'checkbox',
         labelContent: medium,
@@ -102,11 +128,20 @@ class Settings extends Control {
     }
 
     this.materials = [];
-    const materialsContainer = new Control({ parentNode: node });
+    const materialsContainer = new Control({ parentNode: node, className: 'settings-category' });
+    new Control({
+      parentNode: materialsContainer.node,
+      tagName: 'h3',
+      className: 'settings-category__name',
+      content: 'Materials',
+    });
     for (const material in Materials) {
       const materialsSetting = new InputSetting({
-        parentNode: materialsContainer.node,
-        className: `setting ${material}`,
+        parentNode: new Control({
+          parentNode: materialsContainer.node,
+          className: 'setting settings-category__setting',
+        }).node,
+        className: 'setting__checkbox',
         id: material,
         type: 'checkbox',
         labelContent: material,
@@ -123,20 +158,32 @@ class Settings extends Control {
       this.materials.push(materialsSetting);
     }
 
-    new Control({ parentNode: node, tagName: 'h3', content: 'Size' });
+    const sizeContainer = new Control({ parentNode: node, className: 'settings-category' }).node;
+    new Control({
+      parentNode: sizeContainer,
+      tagName: 'h3',
+      className: 'settings-category__name',
+      content: 'Size <span class="settings-category__label">30 cm — 150 cm</span>',
+    });
     const sizeSlider = new RangeSlider({
-      parentNode: node,
-      className: 'size slider',
+      parentNode: sizeContainer,
+      className: 'setting settings-category__setting slider',
       id: 'size',
       min: '30',
       max: '150',
     });
     this.size = sizeSlider;
 
-    new Control({ parentNode: node, tagName: 'h3', content: 'Price' });
+    const priceContainer = new Control({ parentNode: node, className: 'settings-category' }).node;
+    new Control({
+      parentNode: priceContainer,
+      tagName: 'h3',
+      className: 'settings-category__name',
+      content: 'Price <span class="settings-category__label">€ 50 — € 100</span>',
+    });
     const priceSlider = new RangeSlider({
-      parentNode: node,
-      className: 'price slider',
+      parentNode: priceContainer,
+      className: 'setting settings-category__setting slider',
       id: 'price',
       min: '50',
       max: '100',
@@ -144,8 +191,8 @@ class Settings extends Control {
     this.price = priceSlider;
 
     const unique = new InputSetting({
-      parentNode: node,
-      className: 'setting search',
+      parentNode: new Control({ parentNode: node, className: 'setting' }).node,
+      className: 'setting__checkbox',
       id: 'unique',
       type: 'checkbox',
       labelContent: 'unique',
@@ -162,14 +209,14 @@ class Settings extends Control {
     this.filtersReset = new Control<HTMLButtonElement>({
       parentNode: node,
       tagName: 'button',
-      className: 'setting reset',
+      className: 'settings__button',
       content: 'Reset filters',
     });
 
     this.reset = new Control<HTMLButtonElement>({
       parentNode: node,
       tagName: 'button',
-      className: 'setting reset',
+      className: 'settings__button',
       content: 'Reset settings',
     });
   }
@@ -190,12 +237,8 @@ class Settings extends Control {
     ];
   }
 
-  public get selects(): SelectSetting[] {
-    return [this.sorter];
-  }
-
   public onreset(values: ISettings) {
-    [...this.selects, ...this.inputs].forEach((setting) => setting.reset(values));
+    [this.selector, ...this.inputs].forEach((setting) => setting.reset(values));
   }
 }
 

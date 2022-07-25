@@ -5,7 +5,6 @@ import InputSetting from './inputSetting';
 import './rangeSlider.css';
 
 class RangeInputSetting extends InputSetting {
-  public labelContent: string;
   public oninput!: () => void;
   constructor({
     parentNode,
@@ -14,7 +13,6 @@ class RangeInputSetting extends InputSetting {
     content = '',
     id = '',
     type = 'range',
-    labelContent = 'from',
     min = '',
     max = '',
     step = '1',
@@ -27,16 +25,14 @@ class RangeInputSetting extends InputSetting {
     content?: string;
     id?: string;
     type?: string;
-    labelContent?: 'from' | 'to';
     min?: string;
     max?: string;
     step?: string;
     onUpdate: (filters: IFilterData) => Promise<IFilterData>;
     reset: (settings: ISettings) => void;
   }) {
-    super({ parentNode, tagName, className, content, id, type, labelContent, onUpdate, reset });
+    super({ parentNode, tagName, className, content, id, type, onUpdate, reset });
 
-    this.labelContent = labelContent;
     this.node.min = min;
     this.node.max = max;
     this.node.step = step;
@@ -48,7 +44,7 @@ class RangeSlider extends Control {
   public to: RangeInputSetting;
   constructor({
     parentNode,
-    tagName = 'div',
+    tagName,
     className = 'slider',
     content = '',
     id,
@@ -68,10 +64,9 @@ class RangeSlider extends Control {
 
     const from = new RangeInputSetting({
       parentNode: this.node,
-      className: 'setting from',
+      className: 'slider__input',
       id: `${id}from`,
       type: 'range',
-      labelContent: 'from',
       min: min,
       max: max,
       step: '1',
@@ -87,10 +82,9 @@ class RangeSlider extends Control {
 
     const to = new RangeInputSetting({
       parentNode: this.node,
-      className: 'setting to',
+      className: 'slider__input',
       id: `${id}to`,
       type: 'range',
-      labelContent: 'to',
       min: min,
       max: max,
       step: '1',
@@ -106,14 +100,14 @@ class RangeSlider extends Control {
       },
     });
 
-    const sliderView = new Control({ parentNode: this.node }).node;
-    const range = new Control({ parentNode: sliderView, className: 'range' });
-    const progressLeft = new Control({ parentNode: sliderView, className: 'progress from' });
-    const progressRight = new Control({ parentNode: sliderView, className: `progress to` });
-    const thumbLeft = new Control({ parentNode: sliderView, className: 'thumb' });
-    const thumbRight = new Control({ parentNode: sliderView, className: 'thumb' });
-    const signLeft = new Control({ parentNode: sliderView, className: 'sign' });
-    const signRight = new Control({ parentNode: sliderView, className: 'sign' });
+    const sliderView = new Control({ parentNode: this.node, className: 'slider__view' }).node;
+    const range = new Control({ parentNode: sliderView, className: 'slider__range' });
+    const progressLeft = new Control({ parentNode: sliderView, className: 'slider__progress slider__progress_from' });
+    const progressRight = new Control({ parentNode: sliderView, className: 'slider__progress slider__progress_to' });
+    const thumbLeft = new Control({ parentNode: sliderView, className: 'slider__thumb' });
+    const thumbRight = new Control({ parentNode: sliderView, className: 'slider__thumb' });
+    const signLeft = new Control({ parentNode: sliderView, className: 'slider__sign' });
+    const signRight = new Control({ parentNode: sliderView, className: 'slider__sign' });
 
     from.oninput = () => {
       from.node.value = Math.min(Number(from.node.value), Number(to.node.value)).toString();
@@ -123,7 +117,7 @@ class RangeSlider extends Control {
       range.node.style.left = `${value}%`;
       thumbLeft.node.style.left = `${value}%`;
       signLeft.node.style.left = `${value}%`;
-      signLeft.node.innerHTML = `<span>${from.node.value}</span>`;
+      signLeft.node.innerHTML = `<span class="slider__sign-span slider__sign-span_${id}">${from.node.value}</span>`;
     };
 
     to.oninput = () => {
@@ -133,7 +127,7 @@ class RangeSlider extends Control {
       range.node.style.right = `${100 - value}%`;
       thumbRight.node.style.left = `${value}%`;
       signRight.node.style.left = `${value}%`;
-      signRight.node.innerHTML = `<span>${to.node.value}</span>`;
+      signRight.node.innerHTML = `<span class="slider__sign-span slider__sign-span_${id}">${to.node.value}</span>`;
     };
 
     this.to = to;

@@ -6,25 +6,37 @@ import './app.css';
 import IFilterData from '../model/IFilterData';
 import ISettings, { defaultSettings } from '../model/ISettings';
 import ISortOptions from '../model/ISortOptions';
+
+import footer from '../view/footer.html';
+import '../view/footer.css';
+
 class Application extends Control {
   public model: StoreDataModel;
   public view: View;
   private _settings!: ISettings;
-  preloader: Control<HTMLElement>;
+  public header: Control<HTMLElement>;
+  public footer: Control<HTMLElement>;
+  public preloader: Control<HTMLElement>;
+  public search: HTMLInputElement;
 
   constructor({ parentNode }: { parentNode: HTMLElement }) {
     super({ parentNode });
     this.preloader = new Control({ parentNode: this.node, content: '...', className: 'loader' });
 
     this.model = new StoreDataModel();
+    this.header = new Control({ parentNode: this.node, className: 'header' });
     this.view = new View({ parentNode: this.node, className: 'store' });
+    this.footer = new Control({ parentNode: this.node, className: 'footer', content: footer });
+
+    this.search = this.view.settings.name.node;
+    this.header.node.append(this.search.parentNode || this.search);
 
     this.loadFromStorage();
     this.model.build().then((model) => {
       this.view.render(model.data);
       this.view.reset(model.state);
       this.preloader.destroy();
-      this.view.node.style.display = 'block';
+      this.view.node.style.display = 'grid';
     });
 
     this.model.onUpdate = () => this.view.render(this.model.data);
@@ -37,6 +49,8 @@ class Application extends Control {
 
     this.view.resetButton.onclick = () => this.reset();
     this.view.filtersResetButton.onclick = () => this.resetFilters();
+
+    this.search.focus();
   }
 
   get settings() {

@@ -9,7 +9,7 @@ class SelectSetting extends Control<HTMLSelectElement> {
   constructor({
     parentNode,
     tagName = 'select',
-    className = 'setting',
+    className = 'setting_select__select',
     content = '',
     id = '',
     labelContent = '',
@@ -34,7 +34,7 @@ class SelectSetting extends Control<HTMLSelectElement> {
     const label = document.createElement('label');
 
     label.htmlFor = id;
-    label.className = `label ${className}`;
+    label.className = 'setting_select__label';
     label.innerHTML = labelContent;
 
     if (parentNode) parentNode.append(label);
@@ -45,6 +45,7 @@ class SelectSetting extends Control<HTMLSelectElement> {
       const opt = new Control({
         parentNode: this.node,
         tagName: 'option',
+        className: 'setting_select__option',
         content: options[<keyof ISortOptions>option],
       });
       (<HTMLOptionElement>opt.node).value = option;

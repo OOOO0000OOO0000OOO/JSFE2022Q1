@@ -34,7 +34,7 @@ class InputSetting extends Control<HTMLInputElement> {
 
     const label = document.createElement('label');
     label.htmlFor = id;
-    label.className = `label ${className}`;
+    label.className = 'label setting__label';
     label.innerHTML = labelContent;
     if (parentNode) parentNode.append(label);
     this.label = label;

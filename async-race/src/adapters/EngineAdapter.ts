@@ -7,7 +7,7 @@ enum EngineStatus {
   DRIVE = 'drive',
 }
 
-interface IEngineResponse {
+interface IEngine {
   velocity: number;
   distance: number;
 }
@@ -18,11 +18,11 @@ class EngineAdapter extends APIadapter {
     this.url += 'engine';
   }
 
-  public toggle(id: number, status: EngineStatus): Promise<IEngineResponse | void> {
+  public toggle(id: number, status: EngineStatus): Promise<IEngine | void> {
     const route = `?id=${id}&status=${status}`;
 
     return fetch(`${this.url}${route}`, { method: 'PATCH' })
-      .then((res): Promise<IEngineResponse | void> => res.json())
+      .then((res): Promise<IEngine | void> => res.json())
       .catch((error: Error): void => console.log(error));
   }
 

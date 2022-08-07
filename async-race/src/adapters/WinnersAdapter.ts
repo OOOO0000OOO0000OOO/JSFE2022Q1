@@ -1,5 +1,6 @@
 import APIadapter from './APIadapter';
 import HTTPStatusCode from '../types/HTTPStatusCode';
+import SortOrder from '../types/SortOrder';
 
 interface IWinner {
   id: number,
@@ -16,11 +17,6 @@ enum SortOptions {
   ID = 'id',
   WINS = 'wins',
   TIME = 'time',
-}
-
-enum SortOrder {
-  ASC = 'ASC',
-  DESC = 'DESC',
 }
 
 class WinnersAdapter extends APIadapter {

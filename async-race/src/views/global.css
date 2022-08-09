@@ -1,0 +1,9 @@
+@import url('./normalize.css');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+html {
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+}
+body {
+  background-color: #010409;
+}

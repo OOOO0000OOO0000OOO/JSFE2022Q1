@@ -1,0 +1,82 @@
+.car-row {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  border-bottom: dashed 2px white;
+}
+
+.car-header {
+  display: flex;
+  height: 30px;
+}
+
+.car-header__car-name {
+  color: rgb(177, 140, 37);
+  font-size: 1rem;
+}
+
+.track {
+  display: flex;
+  column-gap: 10px;
+  height: 60px;
+}
+
+.track__car-control {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  background-color: transparent;
+  color: rgb(65, 177, 37);
+  font-size: 0.75rem;
+  font-weight: 900;
+  border: 2px solid;
+  border-radius: 20%;
+}
+
+.track__car-control_A {
+  color: rgb(65, 177, 37);
+  border-color: rgb(65, 177, 37);
+}
+
+.track__car-control_B {
+  color: rgb(177, 37, 37);
+  border-color: rgb(177, 37, 37);
+}
+
+.track__car-control:disabled {
+  color: rgb(65, 65, 65);
+  border-color: rgb(65, 65, 65);
+}
+
+.track__car-control:not(:disabled):hover {
+  cursor: pointer;
+}
+
+.track__car-track {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.track::after {
+  content: '';
+  position: absolute;
+  right: 160px;
+  transform: translateY(10px);
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: url('../assets/flag.svg') center / 40px no-repeat;
+}
+
+.track__car-svg {
+  position: absolute;
+  transform: translateY(15px);
+  width: 130px;
+}
+
+.track__car {
+  position: absolute;
+  width: 150px;
+  height: 100%;
+}

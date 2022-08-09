@@ -9,12 +9,11 @@ class EngineAdapter extends APIadapter {
     this.url += 'engine';
   }
 
-  public toggle(id: number, status: EngineStatus): Promise<IEngine | void> {
+  public toggle(id: number, status: EngineStatus): Promise<IEngine> {
     const route = `?id=${id}&status=${status}`;
 
     return fetch(`${this.url}${route}`, { method: 'PATCH' })
-      .then((res): Promise<IEngine | void> => res.json())
-      .catch((error: Error): void => console.log(error));
+      .then((res): Promise<IEngine> => res.json());
   }
 
   public drive(id: number): Promise<boolean | void> {

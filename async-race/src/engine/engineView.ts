@@ -1,15 +1,18 @@
 import Control from '../common/control';
 import Car from './carView';
+import ICar from '../types/ICar';
 import './engineView.css';
 
 class EngineView extends Control {
-  public id: number;
+  public id!: number;
 
   public name: string;
 
   public color: string;
 
-  public header: Control<HTMLElement>;
+  public selectButton: HTMLButtonElement;
+
+  public removeButton: HTMLButtonElement;
 
   public startButton: HTMLButtonElement;
 
@@ -21,19 +24,24 @@ class EngineView extends Control {
 
   private animation!: Animation;
 
-  constructor(id: number, name: string, color: string) {
-    super({ parentNode: null, className: 'car-row' });
-    this.id = id;
+  constructor(parentNode: HTMLElement, { id, name, color }: ICar) {
+    super({ parentNode, className: 'car-row' });
+    if (id) this.id = id;
     this.name = name;
     this.color = color;
 
-    this.header = new Control({ parentNode: this.node, className: 'car-header', content: `<h1 class = "car-header__car-name">${this.name}</h1>` });
-    const track = new Control({ parentNode: this.node, className: 'track' }).node;
+    const header = new Control({ parentNode: this.node, className: 'car-header', content: `<h1 class = "car-header__car-name">${this.name}</h1>` }).node;
+    this.selectButton = new Control<HTMLButtonElement>({
+      parentNode: header, tagName: 'button', className: 'control', content: 'Select',
+    }).node;
+    this.removeButton = new Control<HTMLButtonElement>({
+      parentNode: header, tagName: 'button', className: 'control', content: 'Remove',
+    }).node;
 
+    const track = new Control({ parentNode: this.node, className: 'track' }).node;
     this.startButton = new Control<HTMLButtonElement>({
       parentNode: track, tagName: 'button', className: 'track__car-control track__car-control_A', content: 'A',
     }).node;
-
     this.stopButton = new Control<HTMLButtonElement>({
       parentNode: track, tagName: 'button', className: 'track__car-control track__car-control_B', content: 'B',
     }).node;

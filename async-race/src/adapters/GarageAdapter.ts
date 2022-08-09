@@ -1,16 +1,7 @@
 import APIadapter from './APIadapter';
 import HTTPStatusCode from '../types/HTTPStatusCode';
-
-interface ICar {
-  id?: number;
-  color: string;
-  name: string;
-}
-
-interface IGarage {
-  total: string;
-  cars: Promise<ICar[]>;
-}
+import ICar from '../types/ICar';
+import IGarage from '../types/IGarage';
 
 class GarageAdapter extends APIadapter {
   constructor() {

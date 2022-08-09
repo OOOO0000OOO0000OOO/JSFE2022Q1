@@ -1,16 +1,7 @@
 import APIadapter from './APIadapter';
 import HTTPStatusCode from '../types/HTTPStatusCode';
-
-enum EngineStatus {
-  STARTED = 'started',
-  STOPPED = 'stopped',
-  DRIVE = 'drive',
-}
-
-interface IEngine {
-  velocity: number;
-  distance: number;
-}
+import IEngine from '../types/IEngine';
+import EngineStatus from '../types/EngineStatus';
 
 class EngineAdapter extends APIadapter {
   constructor() {

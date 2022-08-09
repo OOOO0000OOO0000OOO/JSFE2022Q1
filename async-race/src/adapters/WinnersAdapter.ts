@@ -1,23 +1,9 @@
 import APIadapter from './APIadapter';
 import HTTPStatusCode from '../types/HTTPStatusCode';
 import SortOrder from '../types/SortOrder';
-
-interface IWinner {
-  id: number,
-  wins: number,
-  time: number,
-}
-
-interface IWinners {
-  total: string;
-  winners: Promise<IWinner[]>;
-}
-
-enum SortOptions {
-  ID = 'id',
-  WINS = 'wins',
-  TIME = 'time',
-}
+import IWinner from '../types/IWinner';
+import IWinners from '../types/IWinners';
+import SortOptions from '../types/SortOptions';
 
 class WinnersAdapter extends APIadapter {
   constructor() {

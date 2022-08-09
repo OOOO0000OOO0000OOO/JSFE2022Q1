@@ -1,6 +1,6 @@
-import EngineAdapter from '../adapters/EngineAdapter';
+import EngineAdapter from '../services/engineAdapter';
 import EngineStatus from '../types/EngineStatus';
-import EngineView from '../views/engineView';
+import EngineView from './engineView';
 import calculateTime from '../utils/calculate';
 
 class EngineController {

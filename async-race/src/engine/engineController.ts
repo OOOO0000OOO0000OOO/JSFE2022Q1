@@ -2,7 +2,7 @@ import EngineAdapter from '../services/engineAdapter';
 import EngineStatus from '../types/EngineStatus';
 import EngineView from './engineView';
 import IEngine from '../types/IEngine';
-import calculateTime from '../utils/calculate';
+import calculateTime from '../utils/calculateTime';
 import ICar from '../types/ICar';
 
 class EngineController {

@@ -7,9 +7,9 @@ import IGarage from '../types/IGarage';
 import IEngine from '../types/IEngine';
 import ICar from '../types/ICar';
 import HTTPStatusCode from '../types/HTTPStatusCode';
-import { getRandomCarName, getRandomHex } from '../utils/random';
+import { getRandomCarName, getRandomHex } from '../utils/getRandomCar';
+import calculateTime from '../utils/calculateTime';
 import arrayOf from '../utils/getArrayOf';
-import calculateTime from '../utils/calculate';
 
 class GarageController {
   static PAGE_SIZE = 7;

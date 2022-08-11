@@ -1,0 +1,59 @@
+.garage {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.garage__form,
+.garage__controls {
+  display: flex;
+  width: 470px;
+  column-gap: 10px;
+  justify-items: stretch;
+}
+
+.form__name-input {
+  display: block;
+  font-size: .8rem;
+  width: 270px;
+  padding: 0px 10px;
+  transition: border-color .3s ease-in-out, color .3s ease-in-out;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  outline: none;
+}
+
+.form__color-input {
+  display: block;
+  width: 50px;
+}
+
+.control {
+  display: block;
+  width: 130px;
+  height: 27px;
+  cursor: pointer;
+}
+
+.control:disabled {
+  background-color: #bababa;
+  cursor: auto;
+}
+
+.control_generate {
+  flex-grow: 1;
+}
+
+.garage__content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.garage__stats {
+  font-weight: 700;
+}
+
+.garage__page-index {
+  margin: 0;
+}

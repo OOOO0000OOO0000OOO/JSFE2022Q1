@@ -2,6 +2,7 @@ import Control from '../common/control';
 import ICar from '../types/ICar';
 import IGarage from '../types/IGarage';
 import CarForm from './carForm';
+import './garageView.css';
 
 class GarageView extends Control<HTMLElement> {
   public showWinner!: (name: ICar['name'], time: number) => void;

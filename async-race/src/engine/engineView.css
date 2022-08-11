@@ -6,13 +6,16 @@
 }
 
 .car-header {
-  display: flex;
   height: 30px;
+  display: flex;
+  column-gap: 10px;
 }
+
 
 .car-header__car-name {
   color: rgb(177, 140, 37);
   font-size: 1rem;
+  order: 5;
 }
 
 .track {
@@ -53,7 +56,7 @@
 }
 
 .track__car-track {
-  width: 100%;
+  flex-grow: 1;
   height: 100%;
   position: relative;
 }

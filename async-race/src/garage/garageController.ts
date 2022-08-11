@@ -8,7 +8,6 @@ import IEngine from '../types/IEngine';
 import ICar from '../types/ICar';
 import HTTPStatusCode from '../types/HTTPStatusCode';
 import { getRandomCarName, getRandomHex } from '../utils/getRandomCar';
-import calculateTime from '../utils/calculateTime';
 import arrayOf from '../utils/getArrayOf';
 
 class GarageController {
@@ -26,10 +25,6 @@ class GarageController {
 
   private onUpdate: (total: IGarage['total'] | void) => void;
 
-  private onWinner: ({ name, time }: { name: ICar['name']; time: number }) => void;
-
-  public onWinnerUpdate!: () => void;
-
   constructor(garageAdapter: GarageAdapter, garageView: GarageView, page = 1) {
     this.engines = [];
     this.page = page;
@@ -46,7 +41,6 @@ class GarageController {
     );
 
     this.onUpdate = (total: IGarage['total'] | void): void => this.view.updateStats(total, this.page);
-    this.onWinner = ({ name, time }: { name: ICar['name']; time: number }): void => this.view.showWinner(name, time);
 
     this.view.raceButton.onclick = () => this.startRace();
     this.view.resetButton.onclick = () => this.resetEngines();
@@ -102,14 +96,7 @@ class GarageController {
 
   private startRace(): void {
     Promise.any([...this.startEngines()])
-      .then((winner) => this.adapter
-        .readCar(winner?.id)
-        .then((car) => this.onWinner(
-          { name: (<ICar>car).name, time: calculateTime(<IEngine>winner) },
-        )))
       .catch((error: Error) => console.log(error));
-
-    this.onWinnerUpdate();
   }
 
   private generateCars(): void {

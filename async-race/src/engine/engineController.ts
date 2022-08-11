@@ -32,7 +32,7 @@ class EngineController {
     this.view.stopButton.onclick = () => this.onStop();
   }
 
-  private startEngine(id: number): Promise<IEngine & ICar | void> {
+  private startEngine(id: number): Promise<void> {
     const details = this.adapter.toggle(id, EngineStatus.STARTED);
     return details
       .then((data): number => calculateTime(data))
@@ -41,11 +41,8 @@ class EngineController {
       .then((isOK): void => {
         if (!isOK) {
           this.view.killCar();
-          Promise.reject();
         }
-        Promise.resolve({ id, details });
-      })
-      .catch();
+      });
   }
 
   private stopEngine(id: number): void {

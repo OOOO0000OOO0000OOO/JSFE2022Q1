@@ -30,22 +30,22 @@ class GarageController {
 
   public onWinnerUpdate!: () => void;
 
-  constructor(page: number, garageAdapter: GarageAdapter, garageView: GarageView) {
+  constructor(garageAdapter: GarageAdapter, garageView: GarageView, page = 1) {
     this.engines = [];
     this.page = page;
 
     this.adapter = garageAdapter;
     this.view = garageView;
 
-    this.view.createForm.onsubmit = (): void => this.createCar(
-      Object.fromEntries(new FormData(this.view.createForm)) as unknown as ICar,
+    this.view.creatingForm.submit.onclick = (): void => this.createCar(
+      this.view.creatingForm.values,
     );
 
-    this.view.updateForm.onsubmit = (): void => this.updateCar(
-      Object.fromEntries(new FormData(this.view.updateForm)) as unknown as ICar,
+    this.view.updatingForm.submit.onclick = (): void => this.updateCar(
+      this.view.updatingForm.values,
     );
 
-    this.onUpdate = (total: IGarage['total'] | void) => this.view.update(total, this.page);
+    this.onUpdate = (total: IGarage['total'] | void): void => this.view.updateStats(total, this.page);
     this.onWinner = ({ name, time }: { name: ICar['name']; time: number }): void => this.view.showWinner(name, time);
 
     this.view.raceButton.onclick = () => this.startRace();
@@ -114,7 +114,6 @@ class GarageController {
         .then((car) => this.adapter.createCar(car)),
       GarageController.GEN_SIZE - 1,
     );
-
     Promise.allSettled(promises)
       .then(() => this.clearView())
       .then(() => this.getEngines())

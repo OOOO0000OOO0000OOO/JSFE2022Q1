@@ -7,13 +7,10 @@ class Router {
 
   private readonly notFound: HTMLElement;
 
-  constructor() {
-    this.root = document.getElementById('app');
-    this.routes = new Map([
-      ['/garage', new Control({ parentNode: null, content: 'garage' }).node],
-      ['/winners', new Control({ parentNode: null, content: 'winners' }).node],
-    ]);
-    this.notFound = new Control({ parentNode: null, content: '404' }).node;
+  constructor(root: HTMLElement, entries: Iterable<readonly [string, HTMLElement]>) {
+    this.root = root;
+    this.routes = new Map(entries);
+    this.notFound = new Control({ parentNode: null }).node;
   }
 
   add(path: string, page: HTMLElement): void {
@@ -38,8 +35,8 @@ class Router {
     }
   }
 
-  init(): void {
-    if (!window.location.hash) window.location.hash = '#/garage';
+  init(initial: string): void {
+    if (!window.location.hash) window.location.hash = `#${initial}`;
     window.onhashchange = () => this.render();
     this.render();
   }

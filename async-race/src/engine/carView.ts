@@ -1,7 +1,7 @@
 import Control from '../common/control';
 
 class Car extends Control {
-  color: string;
+  public color: string;
 
   constructor(parentNode: HTMLElement, color = '#ffffff') {
     super({ parentNode, className: 'track__car' });

@@ -35,10 +35,10 @@ class EngineController {
   private startEngine(id: number): Promise<IEngine & ICar | void> {
     const details = this.adapter.toggle(id, EngineStatus.STARTED);
     return details
-      .then((data) => calculateTime(data))
-      .then((time) => this.view.startCar(time))
-      .then(() => this.adapter.drive(id))
-      .then((isOK) => {
+      .then((data): number => calculateTime(data))
+      .then((time): void => this.view.startCar(time))
+      .then((): Promise<boolean | void> => this.adapter.drive(id))
+      .then((isOK): void => {
         if (!isOK) {
           this.view.killCar();
           Promise.reject();

@@ -5,6 +5,10 @@ import CarForm from './carForm';
 import './garageView.css';
 
 class GarageView extends Control<HTMLElement> {
+  public creatingForm: CarForm;
+
+  public updatingForm: CarForm;
+
   public showWinner!: (name: ICar['name'], time: number) => void;
 
   public raceButton: HTMLButtonElement;
@@ -45,15 +49,15 @@ class GarageView extends Control<HTMLElement> {
     this.#garage.innerHTML = '';
   }
 
-  get garage(): HTMLElement {
+  public get garage(): HTMLElement {
     return this.#garage;
   }
 
-  set stats({ total, page }: { total: IGarage['total'] | void, page: number }) {
+  public set stats({ total, page }: { total: IGarage['total'] | void, page: number }) {
     this.#stats.innerHTML = `<p>Garage (${total})</p><p class="garage__page-index">Page #${page}</p>`;
   }
 
-  public updateStats(total: IGarage['total'] | void, page: number) {
+  public updateStats(total: IGarage['total'] | void, page: number): void {
     this.stats = { total, page };
   }
 }

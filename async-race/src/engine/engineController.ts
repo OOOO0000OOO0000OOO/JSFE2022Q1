@@ -46,10 +46,9 @@ class EngineController {
   }
 
   private stopEngine(id: number): void {
-    const details = this.adapter.toggle(id, EngineStatus.STOPPED);
-    details
-      .then(() => this.view.resetCar())
+    this.adapter.toggle(id, EngineStatus.STOPPED)
       .catch((error) => console.log(error));
+    this.view.resetCar();
   }
 
   public onStart(): Promise<IEngine & ICar | void> {
@@ -57,8 +56,8 @@ class EngineController {
     return this.startEngine(this.id);
   }
 
-  public onStop() {
-    return this.stopEngine(this.id);
+  public onStop(): void {
+    this.stopEngine(this.id);
   }
 }
 

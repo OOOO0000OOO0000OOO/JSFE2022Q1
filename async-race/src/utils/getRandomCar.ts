@@ -14,5 +14,5 @@ export function getRandomCarName(): Promise<string> {
 }
 
 export function getRandomHex(): string {
-  return floor(random(16 ** 6)).toString(16).padEnd(6, '0');
+  return `#${floor(random(16 ** 6)).toString(16).padEnd(6, '0')}`;
 }

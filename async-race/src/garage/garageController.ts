@@ -87,10 +87,10 @@ class GarageController {
 
   private generateCars(): void {
     const promises = arrayOf<Promise<HTTPStatusCode | void>>(
-      getRandomCarName()
+      () => getRandomCarName()
         .then((randName): ICar => ({ name: randName, color: getRandomHex() }))
-        .then((car): number => promises.push(this.adapter.createCar(car))),
-      GarageController.GEN_SIZE,
+        .then((car) => this.adapter.createCar(car)),
+      GarageController.GEN_SIZE - 1,
     );
 
     Promise.allSettled(promises)

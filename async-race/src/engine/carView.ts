@@ -14,7 +14,7 @@ class Car extends Control {
     fetch('./public/car.svg')
       .then((res): Promise<string> => res.text())
       .then((svg): void => {
-        const colored = svg.replace('%color%', `#${this.color};`);
+        const colored = svg.replace('%color%', `${this.color};`);
         this.node.innerHTML = colored;
       });
   }

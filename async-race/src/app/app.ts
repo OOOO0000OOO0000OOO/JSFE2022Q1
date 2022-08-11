@@ -27,9 +27,11 @@ class AppController extends Control {
       ['/garage', garageView.node],
       ['/winners', new Control({ parentNode: null, content: 'winners' }).node],
     ]);
-    this.router.init('/garage');
-
     parentNode.append(new Control({ parentNode, className: 'footer', content: footer }).node);
+  }
+
+  init() {
+    this.router.init('/garage');
   }
 }
 

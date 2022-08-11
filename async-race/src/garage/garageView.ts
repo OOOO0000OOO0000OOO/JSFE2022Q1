@@ -26,9 +26,7 @@ class GarageView extends Control<HTMLElement> {
 
     this.creatingForm = new CarForm({ parentNode: this.node, content: 'CREATE' });
     this.updatingForm = new CarForm({ parentNode: this.node, content: 'UPDATE' });
-    this.updatingForm.name.disabled = true;
-    this.updatingForm.color.disabled = true;
-    this.updatingForm.submit.disabled = true;
+    this.updatingForm.disable(true);
 
     const controls = new Control({ parentNode: this.node, className: 'garage__controls' }).node;
     this.raceButton = new Control<HTMLButtonElement>({

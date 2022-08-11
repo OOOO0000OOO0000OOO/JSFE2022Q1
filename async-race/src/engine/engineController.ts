@@ -62,6 +62,14 @@ class EngineController {
   public onStop(): void {
     this.stopEngine(this.id);
   }
+
+  public setValues(values: ICar): void {
+    this.view.values = values;
+  }
+
+  public getValues(): ICar {
+    return this.view.values;
+  }
 }
 
 export default EngineController;

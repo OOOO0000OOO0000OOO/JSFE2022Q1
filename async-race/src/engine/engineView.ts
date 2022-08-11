@@ -18,6 +18,8 @@ class EngineView extends Control {
 
   public stopButton: HTMLButtonElement;
 
+  public headerName: Control<HTMLElement>;
+
   public track: Control<HTMLElement>;
 
   public car: Car;
@@ -30,12 +32,14 @@ class EngineView extends Control {
     this.name = name;
     this.color = color;
 
-    const header = new Control({ parentNode: this.node, className: 'car-header', content: `<h1 class = "car-header__car-name">${this.name}</h1>` }).node;
+    const header = new Control({ parentNode: this.node, className: 'car-header' });
+
+    this.headerName = new Control({ parentNode: header.node, className: 'car-header__car-name', content: this.name });
     this.selectButton = new Control<HTMLButtonElement>({
-      parentNode: header, tagName: 'button', className: 'control', content: 'SELECT',
+      parentNode: header.node, tagName: 'button', className: 'control', content: 'SELECT',
     }).node;
     this.removeButton = new Control<HTMLButtonElement>({
-      parentNode: header, tagName: 'button', className: 'control', content: 'REMOVE',
+      parentNode: header.node, tagName: 'button', className: 'control', content: 'REMOVE',
     }).node;
 
     const track = new Control({ parentNode: this.node, className: 'track' }).node;
@@ -72,6 +76,18 @@ class EngineView extends Control {
 
   public killCar() {
     if (this.animation) this.animation.pause();
+  }
+
+  public set values(car: ICar) {
+    this.color = car.color;
+    this.car.renderCar(this.color);
+
+    this.name = car.name;
+    this.headerName.node.innerHTML = this.name;
+  }
+
+  public get values():ICar {
+    return { name: this.name, color: this.color };
   }
 }
 

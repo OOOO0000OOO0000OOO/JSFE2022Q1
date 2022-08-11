@@ -75,6 +75,11 @@ class GarageController {
       new EngineView(this.view.garage, car),
     );
     newEngine.onRemove = () => this.removeCar(car.id);
+    newEngine.onSelect = () => {
+      this.view.updatingForm.values = newEngine.getValues();
+      this.view.updatingForm.disable(false);
+      this.view.updatingForm.onSubmit = (values: ICar) => newEngine.setValues(values);
+    };
     return newEngine;
   }
 
@@ -121,6 +126,8 @@ class GarageController {
   }
 
   private createCar(car: ICar): void {
+    this.view.creatingForm.clear();
+
     this.adapter.createCar(car)
       .then(() => this.getData())
       .then((cars) => (this.engines.length < GarageController.PAGE_SIZE ? cars.pop() : undefined))
@@ -129,8 +136,13 @@ class GarageController {
   }
 
   private updateCar(car: ICar): void {
+    this.view.updatingForm.clear();
+    this.view.updatingForm.disable(true);
+
     this.adapter.updateCar(car)
       .catch((error: Error) => console.log(error));
+
+    this.view.updatingForm.onSubmit(car);
   }
 
   private removeCar(id: ICar['id']): void {

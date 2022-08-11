@@ -2,6 +2,10 @@ import Control from '../common/control';
 import ICar from '../types/ICar';
 
 class CarForm extends Control<HTMLFormElement> {
+  onSubmit!: (car: ICar) => void;
+
+  static initials: ICar = { color: '#000000', name: '' };
+
   public name: HTMLInputElement;
 
   public color: HTMLInputElement;
@@ -32,6 +36,16 @@ class CarForm extends Control<HTMLFormElement> {
       },
     ).node;
     this.submit = submit;
+  }
+
+  public disable(isDisabled: boolean) {
+    this.submit.disabled = isDisabled;
+    this.color.disabled = isDisabled;
+    this.name.disabled = isDisabled;
+  }
+
+  public clear() {
+    this.values = CarForm.initials;
   }
 
   public set values(car: ICar) {

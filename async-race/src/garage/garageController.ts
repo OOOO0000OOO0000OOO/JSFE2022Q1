@@ -47,40 +47,62 @@ class GarageController {
 
     this.onUpdate = (total: IGarage['total'] | void) => this.view.update(total, this.page);
     this.onWinner = ({ name, time }: { name: ICar['name']; time: number }): void => this.view.showWinner(name, time);
+
+    this.view.raceButton.onclick = () => this.startRace();
+    this.view.resetButton.onclick = () => this.resetEngines();
+    this.view.generateButton.onclick = () => this.generateCars();
+
+    this.getEngines();
   }
 
-  private getEngines(): void {
-    this.adapter
+  private clearView() {
+    this.view.clear();
+  }
+
+  private getData(): Promise<ICar[]> {
+    return this.adapter
       .getCars(this.page, GarageController.PAGE_SIZE)
       .then((garage) => {
         this.onUpdate(garage?.total);
-        return garage?.cars;
-      })
-      .then((cars) => cars?.map(
-        (car) => new EngineController(
-              <number>car.id,
-              new EngineAdapter(),
-              new EngineView(this.view.node, car),
-        ),
-      ))
+        return garage?.cars || [];
+      });
+  }
+
+  private createEngine(car: ICar): EngineController {
+    const newEngine = new EngineController(
+      <number>car.id,
+      new EngineAdapter(),
+      new EngineView(this.view.garage, car),
+    );
+    newEngine.onRemove = () => this.removeCar(car.id);
+    return newEngine;
+  }
+
+  private getEngines() {
+    this.getData()
+      .then((cars: ICar[]) => cars.map((car) => this.createEngine(car)))
       .then((engines) => {
         if (engines) this.engines = engines;
       })
-      .catch((error) => console.log(error));
+      .catch((error: Error) => console.log(error));
   }
 
-  private resetEngines(): Promise<IEngine & ICar | void>[] {
+  private resetEngines(): void[] {
+    return this.engines.map((engine) => engine.onStop());
+  }
+
+  private startEngines(): Promise<IEngine & ICar | void>[] {
     return this.engines.map((engine) => engine.onStart());
   }
 
   private startRace(): void {
-    Promise.any([...this.resetEngines()])
+    Promise.any([...this.startEngines()])
       .then((winner) => this.adapter
         .readCar(winner?.id)
         .then((car) => this.onWinner(
           { name: (<ICar>car).name, time: calculateTime(<IEngine>winner) },
         )))
-      .catch((error) => console.log(error));
+      .catch((error: Error) => console.log(error));
 
     this.onWinnerUpdate();
   }
@@ -94,25 +116,36 @@ class GarageController {
     );
 
     Promise.allSettled(promises)
+      .then(() => this.clearView())
       .then(() => this.getEngines())
-      .catch((error) => console.log(error));
+      .catch((error: Error) => console.log(error));
   }
 
   private createCar(car: ICar): void {
-    this.adapter
-      .createCar(car)
-      .then(() => this.getEngines())
-      .catch((error) => console.log(error));
+    this.adapter.createCar(car)
+      .then(() => this.getData())
+      .then((cars) => (this.engines.length < GarageController.PAGE_SIZE ? cars.pop() : undefined))
+      .then((last) => last && this.engines.push(this.createEngine(last)))
+      .catch((error: Error) => console.log(error));
   }
 
   private updateCar(car: ICar): void {
     this.adapter.updateCar(car)
-      .catch((error) => console.log(error));
+      .catch((error: Error) => console.log(error));
   }
 
   private removeCar(id: ICar['id']): void {
     this.adapter.deleteCar(id)
-      .catch((error) => console.log(error));
+      .then(() => {
+        this.engines = this.engines.filter((engine) => engine.id !== id);
+      })
+      .then(() => this.getData())
+      .then((cars) => (this.engines.length === cars.length - 1
+        ? cars.pop()
+        : undefined
+      ))
+      .then((last) => last && this.engines.push(this.createEngine(last)))
+      .catch((error: Error) => console.log(error));
   }
 }
 

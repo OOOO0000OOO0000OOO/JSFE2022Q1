@@ -10,7 +10,7 @@ class EngineController {
 
   private readonly view: EngineView;
 
-  private readonly id: number;
+  public readonly id: number;
 
   public onSelect!: () => void;
 
@@ -23,7 +23,10 @@ class EngineController {
     this.view = engineView;
 
     this.view.selectButton.onclick = () => this.onSelect();
-    this.view.removeButton.onclick = () => this.onRemove();
+    this.view.removeButton.onclick = () => {
+      this.view.destroy();
+      this.onRemove();
+    };
 
     this.view.startButton.onclick = () => this.onStart();
     this.view.stopButton.onclick = () => this.onStop();

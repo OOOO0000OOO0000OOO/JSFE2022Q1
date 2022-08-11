@@ -24,7 +24,7 @@ class EngineView extends Control {
 
   private animation!: Animation;
 
-  constructor(parentNode: HTMLElement, { id, name, color }: ICar) {
+  constructor(parentNode: HTMLElement | null, { id, name, color }: ICar) {
     super({ parentNode, className: 'car-row' });
     if (id) this.id = id;
     this.name = name;
@@ -32,10 +32,10 @@ class EngineView extends Control {
 
     const header = new Control({ parentNode: this.node, className: 'car-header', content: `<h1 class = "car-header__car-name">${this.name}</h1>` }).node;
     this.selectButton = new Control<HTMLButtonElement>({
-      parentNode: header, tagName: 'button', className: 'control', content: 'Select',
+      parentNode: header, tagName: 'button', className: 'control', content: 'SELECT',
     }).node;
     this.removeButton = new Control<HTMLButtonElement>({
-      parentNode: header, tagName: 'button', className: 'control', content: 'Remove',
+      parentNode: header, tagName: 'button', className: 'control', content: 'REMOVE',
     }).node;
 
     const track = new Control({ parentNode: this.node, className: 'track' }).node;
@@ -57,7 +57,10 @@ class EngineView extends Control {
     this.startButton.disabled = true;
     this.stopButton.disabled = false;
 
-    this.animation = this.car.node.animate([{ left: '0' }, { left: 'calc(100% - 160px' }], { duration: time, fill: 'forwards' });
+    this.animation = this.car.node.animate(
+      [{ left: '0' }, { left: 'calc(100% - 160px' }],
+      { duration: time, easing: 'ease-in-out', fill: 'forwards' },
+    );
   }
 
   public resetCar() {

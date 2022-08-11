@@ -1,0 +1,32 @@
+.footer {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 50px;
+}
+
+.footer__gh,
+.footer__rs {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #181818;
+  text-align: center;
+}
+
+.footer__a {
+  color: #181818;
+  transition: color .2s ease-in-out;
+}
+
+.footer__a:hover {
+  color: #bbbbbb;
+}
+
+.footer__gh:before {
+  content: '©';
+}
+
+.footer__p {
+  margin: .5em 0;
+}

@@ -7,7 +7,7 @@
 .garage__form,
 .garage__controls {
   display: flex;
-  width: 470px;
+  width: 460px;
   column-gap: 10px;
   justify-items: stretch;
 }
@@ -26,11 +26,16 @@
 .form__color-input {
   display: block;
   width: 50px;
+  cursor: pointer;
+}
+
+.form__color-input:disabled {
+  cursor: auto;
 }
 
 .control {
   display: block;
-  width: 130px;
+  width: 127.5px;
   height: 27px;
   cursor: pointer;
 }

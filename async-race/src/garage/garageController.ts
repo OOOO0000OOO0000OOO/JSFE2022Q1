@@ -22,8 +22,6 @@ class GarageController {
 
   private engines: EngineController[];
 
-  private onUpdate: (total: IGarage['total'] | void) => void;
-
   constructor(garageAdapter: GarageAdapter, garageView: GarageView, page = 1) {
     this.engines = [];
     this.page = page;
@@ -39,8 +37,6 @@ class GarageController {
       this.view.updatingForm.values,
     );
 
-    this.onUpdate = (total: IGarage['total'] | void): void => this.view.updateStats(total, this.page);
-
     this.view.raceButton.onclick = () => this.startRace();
     this.view.resetButton.onclick = () => this.resetEngines();
     this.view.generateButton.onclick = () => this.generateCars();
@@ -48,7 +44,11 @@ class GarageController {
     this.getEngines();
   }
 
-  private clearView() {
+  private onUpdate(total: IGarage['total'] | void): void {
+    this.view.updateStats(total, this.page);
+  }
+
+  private clearView(): void {
     this.view.clear();
   }
 
@@ -63,7 +63,7 @@ class GarageController {
 
   private createEngine(car: ICar): EngineController {
     const newEngine = new EngineController(
-      <number>car.id,
+      car.id,
       new EngineAdapter(),
       new EngineView(this.view.garage, car),
     );
@@ -76,7 +76,7 @@ class GarageController {
     return newEngine;
   }
 
-  private getEngines() {
+  private getEngines(): void {
     this.getData()
       .then((cars: ICar[]) => cars.map((car) => this.createEngine(car)))
       .then((engines) => {

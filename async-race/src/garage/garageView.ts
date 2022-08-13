@@ -43,16 +43,16 @@ class GarageView extends Control<HTMLElement> {
     this.#garage = new Control({ parentNode: this.node, className: 'garage__content' }).node;
   }
 
-  public clear(): void {
-    this.#garage.innerHTML = '';
-  }
-
   public get garage(): HTMLElement {
     return this.#garage;
   }
 
   public set stats({ total, page }: { total: IGarage['total'] | void, page: number }) {
     this.#stats.innerHTML = `<p>Garage (${total})</p><p class="garage__page-index">Page #${page}</p>`;
+  }
+
+  public clear(): void {
+    this.#garage.innerHTML = '';
   }
 
   public updateStats(total: IGarage['total'] | void, page: number): void {

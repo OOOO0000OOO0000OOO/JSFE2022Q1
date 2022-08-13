@@ -2,6 +2,7 @@ import APIadapter from './APIadapter';
 import HTTPStatusCode from '../types/HTTPStatusCode';
 import IEngine from '../types/IEngine';
 import EngineStatus from '../types/EngineStatus';
+import ICar from '../types/ICar';
 
 class EngineAdapter extends APIadapter {
   constructor() {
@@ -9,14 +10,14 @@ class EngineAdapter extends APIadapter {
     this.url += 'engine';
   }
 
-  public toggle(id: number, status: EngineStatus): Promise<IEngine> {
+  public toggle(id: ICar['id'], status: EngineStatus): Promise<IEngine> {
     const route = `?id=${id}&status=${status}`;
 
     return fetch(`${this.url}${route}`, { method: 'PATCH' })
       .then((res): Promise<IEngine> => res.json());
   }
 
-  public drive(id: number): Promise<boolean | void> {
+  public drive(id: ICar['id']): Promise<boolean | void> {
     const route = `?id=${id}&status=drive`;
 
     return fetch(`${this.url}${route}`, { method: 'PATCH' })

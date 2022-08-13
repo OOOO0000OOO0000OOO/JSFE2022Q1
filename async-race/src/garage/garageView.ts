@@ -1,4 +1,5 @@
 import Control from '../common/control';
+import ICar from '../types/ICar';
 import IGarage from '../types/IGarage';
 import CarForm from './carForm';
 import './garageView.css';
@@ -17,6 +18,8 @@ class GarageView extends Control<HTMLElement> {
   #garage: HTMLElement;
 
   #stats: HTMLElement;
+
+  modal!: Control<HTMLElement>;
 
   constructor() {
     super({ parentNode: null, className: 'garage' });
@@ -54,6 +57,13 @@ class GarageView extends Control<HTMLElement> {
 
   public updateStats(total: IGarage['total'] | void, page: number): void {
     this.stats = { total, page };
+  }
+
+  public showWinner(name: ICar['name'], time: number) {
+    const seconds = (Math.floor(time) / 1000).toFixed(1);
+    this.modal = new Control({
+      parentNode: this.node, tagName: 'p', className: 'garage__winner-modal', content: `${name} went first (${seconds}s)`,
+    });
   }
 }
 

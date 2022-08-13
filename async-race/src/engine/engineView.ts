@@ -57,7 +57,7 @@ class EngineView extends Control {
     this.car.renderCar();
   }
 
-  public startCar(time: number) {
+  public startCar(time: number): number {
     this.startButton.disabled = true;
     this.stopButton.disabled = false;
 
@@ -65,16 +65,17 @@ class EngineView extends Control {
       [{ left: '0' }, { left: 'calc(100% - 160px' }],
       { duration: time, easing: 'ease-in-out', fill: 'forwards' },
     );
+    return time;
   }
 
-  public resetCar() {
+  public resetCar(): void {
     this.stopButton.disabled = true;
     this.startButton.disabled = false;
 
     if (this.animation) this.animation.cancel();
   }
 
-  public killCar() {
+  public killCar():void {
     if (this.animation) this.animation.pause();
   }
 

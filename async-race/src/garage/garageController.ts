@@ -4,7 +4,6 @@ import EngineController from '../engine/engineController';
 import EngineView from '../engine/engineView';
 import EngineAdapter from '../services/engineAdapter';
 import IGarage from '../types/IGarage';
-import IEngine from '../types/IEngine';
 import ICar from '../types/ICar';
 import HTTPStatusCode from '../types/HTTPStatusCode';
 import { getRandomCarName, getRandomHex } from '../utils/getRandomCar';
@@ -87,15 +86,26 @@ class GarageController {
   }
 
   private resetEngines(): void[] {
+    this.view.modal?.destroy();
     return this.engines.map((engine) => engine.onStop());
   }
 
-  private startEngines(): Promise<IEngine & ICar | void>[] {
+  private startEngines(): Promise<{ id: ICar['id']; time: number } | void>[] {
+    this.view.modal?.destroy();
     return this.engines.map((engine) => engine.onStart());
   }
 
   private startRace(): void {
-    Promise.any([...this.startEngines()])
+    Promise.any(this.startEngines())
+      .then((winner) => {
+        if (winner && winner.id) {
+          const winnerTime = winner.time;
+          this.adapter.readCar(winner.id)
+            .then((winnerCar: ICar | void) => {
+              if (winnerCar) this.view.showWinner(winnerCar.name, winnerTime);
+            });
+        }
+      })
       .catch((error: Error) => console.log(error));
   }
 

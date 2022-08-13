@@ -1,0 +1,20 @@
+.winners {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.winners__content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.winners__stats {
+  font-weight: 700;
+}
+
+.winners__page-index {
+  margin: 0;
+}

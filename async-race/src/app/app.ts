@@ -1,10 +1,13 @@
 import header from './header.html';
 import footer from './footer.html';
 import Control from '../common/control';
+import GarageAdapter from '../services/garageAdapter';
 import GarageController from '../garage/garageController';
 import GarageView from '../garage/garageView';
 import Router from '../router/router';
-import GarageAdapter from '../services/garageAdapter';
+import WinnersAdapter from '../services/winnersAdapter';
+import WinnersController from '../winners/winnersController';
+import WinnersView from '../winners/winnersView';
 
 import './global.css';
 import './header.css';
@@ -12,6 +15,8 @@ import './footer.css';
 
 class AppController extends Control {
   private garageController: GarageController;
+
+  private winnersController: WinnersController;
 
   private router: Router;
 
@@ -23,9 +28,13 @@ class AppController extends Control {
     const garageView = new GarageView();
     this.garageController = new GarageController(garageAdapter, garageView);
 
+    const winnersAdapter = new WinnersAdapter();
+    const winnersView = new WinnersView();
+    this.winnersController = new WinnersController(winnersAdapter, winnersView);
+
     this.router = new Router(this.node, [
       ['/garage', garageView.node],
-      ['/winners', new Control({ parentNode: null, content: 'winners' }).node],
+      ['/winners', winnersView.node],
     ]);
     parentNode.append(new Control({ parentNode, className: 'footer', content: footer }).node);
   }
